@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact BeastFit | Orders, Sizing, Collabs</title>
+  <meta name="description" content="Contact BeastFit for order questions, sizing help, and wholesale or collaboration inquiries." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar solid" id="topbar">
+    <a class="brand" href="index.html"><span class="brand-mark">◆</span><span>BEAST<span>FIT</span></span></a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-controls="navMenu" aria-expanded="false">☰</button>
+    <nav class="nav" id="navMenu" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="fit-guide.html">Fit Guide</a>
+      <a class="active" href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-icons" aria-hidden="true"><span>♙</span><span class="bag">▢<b>0</b></span></div>
+  </header>
+
+  <main class="page-main">
+    <section class="page-hero contact-hero">
+      <p class="kicker">Contact</p>
+      <h1>Questions before the grind?</h1>
+      <p>Orders, sizing, wholesale, or collabs. Send it clean and we will get you pointed in the right direction.</p>
+      <a href="mailto:contact@beastfit.com" class="hero-email">contact@beastfit.com</a>
+    </section>
+
+    <section class="contact-layout">
+      <div class="contact-info">
+        <p class="kicker">What we handle</p>
+        <h2>Keep it direct.</h2>
+        <div class="contact-topic"><strong>Order questions</strong><span>Shipping, updates, returns, and checkout support.</span></div>
+        <div class="contact-topic"><strong>Sizing questions</strong><span>Fit guidance before you order.</span></div>
+        <div class="contact-topic"><strong>Wholesale / collabs</strong><span>Gym teams, creators, events, and partnerships.</span></div>
+      </div>
+
+      <form name="beastfit-contact" method="POST" data-netlify="true" class="contact-form">
+        <input type="hidden" name="form-name" value="beastfit-contact" />
+        <label>
+          <span>Name</span>
+          <input type="text" name="name" autocomplete="name" required />
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" autocomplete="email" required />
+        </label>
+        <label>
+          <span>Subject</span>
+          <input type="text" name="subject" required />
+        </label>
+        <label>
+          <span>Message</span>
+          <textarea name="message" rows="6" required></textarea>
+        </label>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+
+    <section class="join-strip">
+      <div class="join-left">
+        <span class="join-mark">◆</span>
+        <div>
+          <h2>Join the BeastFit crew.</h2>
+          <p>Drop alerts. Early access. No weak nonsense.</p>
+        </div>
+      </div>
+      <form name="beastfit-contact-crew" method="POST" data-netlify="true" class="join-form">
+        <input type="hidden" name="form-name" value="beastfit-contact-crew" />
+        <input type="email" name="email" placeholder="Enter your email" autocomplete="email" required />
+        <button type="submit">Join the Crew</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-brand">
+      <a class="brand" href="index.html"><span class="brand-mark">◆</span><span>BEAST<span>FIT</span></span></a>
+      <p>Discipline-first gear for the grind.</p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="fit-guide.html">Fit Guide</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a class="footer-email" href="mailto:contact@beastfit.com">contact@beastfit.com</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
