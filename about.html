@@ -10,8 +10,8 @@
 <body>
   <header class="topbar solid" id="topbar">
     <a class="brand" href="index.html"><span class="brand-mark">◆</span><span>BEAST<span>FIT</span></span></a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
-    <nav class="nav" id="navMenu">
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-controls="navMenu" aria-expanded="false">☰</button>
+    <nav class="nav" id="navMenu" aria-label="Primary navigation">
       <a href="index.html">Home</a>
       <a href="shop.html">Shop</a>
       <a class="active" href="about.html">About</a>
@@ -51,8 +51,8 @@
       </div>
       <form name="beastfit-about-crew" method="POST" data-netlify="true" class="join-form">
         <input type="hidden" name="form-name" value="beastfit-about-crew" />
-        <input type="email" name="email" placeholder="Enter your email" required />
-        <button type="submit">Join</button>
+        <input type="email" name="email" placeholder="Enter your email" autocomplete="email" required />
+        <button type="submit">Join the Crew</button>
       </form>
     </section>
   </main>
