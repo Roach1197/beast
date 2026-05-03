@@ -9,8 +9,8 @@
 </head>
 <body>
   <header class="topbar solid" id="topbar">
-    <a class="brand" href="index.html"><span class="brand-mark">◆</span><span>BEAST<span>FIT</span></span></a>
-    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-controls="navMenu" aria-expanded="false">☰</button>
+    <a class="brand" href="index.html"><span class="brand-mark">&#9670;</span><span>BEAST<span>FIT</span></span></a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-controls="navMenu" aria-expanded="false">&#9776;</button>
     <nav class="nav" id="navMenu" aria-label="Primary navigation">
       <a href="index.html">Home</a>
       <a href="shop.html">Shop</a>
@@ -18,7 +18,7 @@
       <a class="active" href="fit-guide.html">Fit Guide</a>
       <a href="contact.html">Contact</a>
     </nav>
-    <div class="nav-icons" aria-hidden="true"><span>♙</span><span class="bag">▢<b>0</b></span></div>
+    <div class="nav-icons" aria-hidden="true"><span>&#9817;</span><span class="bag">&#9634;<b>0</b></span></div>
   </header>
 
   <main class="page-main">
@@ -55,7 +55,7 @@
         <p class="kicker">How to choose</p>
         <h2>Start with your normal training size.</h2>
         <p>If you are between sizes, choose based on the look you want. Size down for a cleaner profile. Stay true for the intended BeastFit fit. Size up for more room, more drape, and a heavier streetwear feel.</p>
-        <a href="shop.html" class="btn outline small">Back to Shop →</a>
+        <a href="shop.html" class="btn outline small">Back to Shop &rarr;</a>
       </div>
       <div class="size-table-wrap">
         <table class="fit-table">
@@ -92,9 +92,89 @@
       </div>
     </section>
 
+    <section class="fit-builder" id="build-your-fit" aria-labelledby="fitBuilderTitle">
+      <div class="fit-builder-panel fit-builder-controls">
+        <p class="kicker">Build Your Fit</p>
+        <h2 id="fitBuilderTitle">Stack the drop.</h2>
+        <p>Pick your headwear, top, and bottom to see what combo hits before you shop.</p>
+
+        <div class="fit-control-group" aria-labelledby="fitHatLabel">
+          <h3 id="fitHatLabel">Hat</h3>
+          <div class="fit-options" role="group" aria-label="Choose a hat">
+            <button class="fit-option active" type="button" data-fit-category="hat" data-fit-value="none" aria-pressed="true">None</button>
+            <button class="fit-option" type="button" data-fit-category="hat" data-fit-value="snapback" aria-pressed="false">Standard Snapback</button>
+          </div>
+        </div>
+
+        <div class="fit-control-group" aria-labelledby="fitTopLabel">
+          <h3 id="fitTopLabel">Top</h3>
+          <div class="fit-options" role="group" aria-label="Choose a top">
+            <button class="fit-option active" type="button" data-fit-category="top" data-fit-value="none" aria-pressed="true">None</button>
+            <button class="fit-option" type="button" data-fit-category="top" data-fit-value="hoodie" aria-pressed="false">Iron Discipline Hoodie</button>
+            <button class="fit-option" type="button" data-fit-category="top" data-fit-value="tee" aria-pressed="false">Relentless Tee</button>
+          </div>
+        </div>
+
+        <div class="fit-control-group" aria-labelledby="fitBottomLabel">
+          <h3 id="fitBottomLabel">Bottom</h3>
+          <div class="fit-options" role="group" aria-label="Choose a bottom">
+            <button class="fit-option active" type="button" data-fit-category="bottom" data-fit-value="none" aria-pressed="true">None</button>
+            <button class="fit-option" type="button" data-fit-category="bottom" data-fit-value="shorts" aria-pressed="false">Grind Shorts</button>
+          </div>
+        </div>
+
+        <div class="fit-builder-actions">
+          <button class="btn outline small" type="button" id="fitReset">Reset Fit</button>
+          <button class="btn gold small" type="button" id="fitBestCombo">Best Combo</button>
+          <a class="btn outline small" href="shop.html">Shop This Fit</a>
+        </div>
+      </div>
+
+      <div class="fit-builder-panel fit-preview-panel">
+        <div class="fit-preview-header">
+          <div>
+            <p class="kicker">Current Fit</p>
+            <h3 id="fitModeTitle">Bare Bones</h3>
+          </div>
+          <div class="fit-mode-badges" aria-label="Fit mode">
+            <span data-fit-mode="training">Training</span>
+            <span data-fit-mode="streetwear">Streetwear</span>
+            <span data-fit-mode="pump">Pump Cover</span>
+          </div>
+        </div>
+
+        <div class="fit-stage" aria-label="Outfit preview">
+          <!-- Future transparent asset slot: assets/fit-builder/mannequin-base.png -->
+          <div class="mannequin" aria-hidden="true">
+            <span class="mannequin-head"></span>
+            <span class="mannequin-neck"></span>
+            <span class="mannequin-torso"></span>
+            <span class="mannequin-arm left"></span>
+            <span class="mannequin-arm right"></span>
+            <span class="mannequin-leg left"></span>
+            <span class="mannequin-leg right"></span>
+
+            <!-- Future transparent asset slot: assets/fit-builder/hat-standard.png -->
+            <span class="fit-layer fit-hat" data-layer="hat"></span>
+            <!-- Future transparent asset slots: assets/fit-builder/top-hoodie-iron.png and assets/fit-builder/top-tee-relentless.png -->
+            <span class="fit-layer fit-top" data-layer="top"></span>
+            <!-- Future transparent asset slot: assets/fit-builder/bottom-shorts-grind.png -->
+            <span class="fit-layer fit-bottom" data-layer="bottom"></span>
+          </div>
+        </div>
+
+        <div class="current-fit-summary" aria-live="polite">
+          <strong>Current Fit:</strong>
+          <ul id="currentFitList">
+            <li>No gear selected</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
     <section class="join-strip">
       <div class="join-left">
-        <span class="join-mark">◆</span>
+        <span class="join-mark">&#9670;</span>
         <div>
           <h2>Still unsure?</h2>
           <p>Ask before you order. We will keep it simple.</p>
@@ -109,7 +189,7 @@
 
   <footer class="site-footer">
     <div class="footer-brand">
-      <a class="brand" href="index.html"><span class="brand-mark">◆</span><span>BEAST<span>FIT</span></span></a>
+      <a class="brand" href="index.html"><span class="brand-mark">&#9670;</span><span>BEAST<span>FIT</span></span></a>
       <p>BUILT DARK. WORN HARD. Discipline-first gear for the grind.</p>
     </div>
     <nav class="footer-nav" aria-label="Footer navigation">
