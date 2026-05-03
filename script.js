@@ -63,6 +63,11 @@ if (fitBuilder) {
       shorts: 'Grind Shorts'
     }
   };
+  const fitCategoryLabels = {
+    hat: 'Hat',
+    top: 'Top',
+    bottom: 'Bottom'
+  };
 
   const state = {
     hat: 'none',
@@ -78,7 +83,7 @@ if (fitBuilder) {
   const getMode = () => {
     if (state.top === 'hoodie') return { label: 'Pump Cover / Streetwear', value: 'pump streetwear' };
     if (state.top === 'tee') return { label: 'Training / Clean Fit', value: 'training' };
-    return { label: 'Bare Bones', value: '' };
+    return { label: 'Build Your Fit', value: '' };
   };
 
   const renderFitBuilder = () => {
@@ -95,25 +100,22 @@ if (fitBuilder) {
     const mode = getMode();
     fitBuilder.dataset.mode = mode.value;
     if (fitModeTitle) fitModeTitle.textContent = mode.label;
+    if (resetButton) {
+      resetButton.disabled = Object.values(state).every((value) => value === 'none');
+    }
 
     if (!currentFitList) return;
 
-    const selectedItems = Object.entries(state)
-      .filter(([, value]) => value !== 'none')
-      .map(([category, value]) => fitLabels[category][value]);
-
     currentFitList.innerHTML = '';
 
-    if (!selectedItems.length) {
+    Object.entries(state).forEach(([category, value]) => {
       const item = document.createElement('li');
-      item.textContent = 'No gear selected';
-      currentFitList.appendChild(item);
-      return;
-    }
+      const categoryLabel = document.createElement('span');
 
-    selectedItems.forEach((label) => {
-      const item = document.createElement('li');
-      item.textContent = label;
+      categoryLabel.textContent = fitCategoryLabels[category];
+      item.appendChild(categoryLabel);
+      item.append(fitLabels[category][value]);
+      item.classList.toggle('empty', value === 'none');
       currentFitList.appendChild(item);
     });
   };
