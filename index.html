@@ -14,9 +14,9 @@
       <span>BEAST<span>FIT</span></span>
     </a>
 
-    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-controls="navMenu" aria-expanded="false">☰</button>
 
-    <nav class="nav" id="navMenu">
+    <nav class="nav" id="navMenu" aria-label="Primary navigation">
       <a class="active" href="index.html">Home</a>
       <a href="shop.html">Shop</a>
       <a href="about.html">About</a>
@@ -33,12 +33,14 @@
   <main>
     <section class="hero-exact">
       <div class="hero-left">
-        <p class="kicker">Drop 001 · Iron Discipline</p>
-        <h1>Built for<br><em>the relentless.</em></h1>
-        <p class="hero-sub">Dark, durable, no-soft-hands apparel for training days, off days, and every ugly rep in between.</p>
-        <div class="actions">
-          <a href="shop.html" class="btn gold">Shop The Drop <span>→</span></a>
-          <a href="#fit-guide" class="btn outline">View Fit Guide</a>
+        <div class="hero-copy">
+          <p class="kicker">Drop 001 · Iron Discipline</p>
+          <h1>Built for<br><em>the relentless.</em></h1>
+          <p class="hero-sub">Dark, durable, no-soft-hands apparel for training days, off days, and every ugly rep in between.</p>
+          <div class="actions">
+            <a href="shop.html" class="btn gold">Shop The Drop <span>→</span></a>
+            <a href="#fit-guide" class="btn outline">View Fit Guide</a>
+          </div>
         </div>
       </div>
 
@@ -121,11 +123,11 @@
 
       <form name="beastfit-crew" method="POST" data-netlify="true" class="join-form">
         <input type="hidden" name="form-name" value="beastfit-crew" />
-        <input type="email" name="email" placeholder="Enter your email" required />
+        <input type="email" name="email" placeholder="Enter your email" autocomplete="email" required />
         <button type="submit">Join the Crew</button>
       </form>
 
-      <div class="socials">
+      <div class="socials" aria-hidden="true">
         <span>◎</span>
         <span>♪</span>
         <span>▶</span>
