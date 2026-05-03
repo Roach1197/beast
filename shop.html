@@ -10,8 +10,8 @@
 <body>
   <header class="topbar solid" id="topbar">
     <a class="brand" href="index.html"><span class="brand-mark">◆</span><span>BEAST<span>FIT</span></span></a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
-    <nav class="nav" id="navMenu">
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-controls="navMenu" aria-expanded="false">☰</button>
+    <nav class="nav" id="navMenu" aria-label="Primary navigation">
       <a href="index.html">Home</a>
       <a class="active" href="shop.html">Shop</a>
       <a href="about.html">About</a>
@@ -28,38 +28,38 @@
       <p>Keep the first drop tight. Hoodies, tees, shorts, and hats. Real checkout connects through Shopify Buy Buttons.</p>
     </section>
 
-    <section class="shop-filters">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="hoodie">Hoodies</button>
-      <button class="filter-btn" data-filter="tee">Tees</button>
-      <button class="filter-btn" data-filter="shorts">Shorts</button>
-      <button class="filter-btn" data-filter="hat">Hats</button>
+    <section class="shop-filters" aria-label="Product filters">
+      <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">All</button>
+      <button class="filter-btn" type="button" data-filter="hoodie" aria-pressed="false">Hoodies</button>
+      <button class="filter-btn" type="button" data-filter="tee" aria-pressed="false">Tees</button>
+      <button class="filter-btn" type="button" data-filter="shorts" aria-pressed="false">Shorts</button>
+      <button class="filter-btn" type="button" data-filter="hat" aria-pressed="false">Hats</button>
     </section>
 
     <section class="shop-grid">
       <article class="product-card" data-category="hoodie">
-        <div class="prod-img hoodie-prod"></div>
+        <div class="prod-img hoodie-prod" role="img" aria-label="Iron Discipline Hoodie"></div>
         <h3>Iron Discipline Hoodie</h3>
         <p>Oversized heavyweight pump cover.</p>
-        <div><strong>$65</strong><a href="#shopify">Add Shopify Button</a></div>
+        <div class="product-meta"><strong>$65</strong><a href="#shopify">Add Shopify Button</a></div>
       </article>
       <article class="product-card" data-category="tee">
-        <div class="prod-img tee-prod"></div>
+        <div class="prod-img tee-prod" role="img" aria-label="Relentless Tee"></div>
         <h3>Relentless Tee</h3>
         <p>Boxy athletic fit. Hard logo hit.</p>
-        <div><strong>$30</strong><a href="#shopify">Add Shopify Button</a></div>
+        <div class="product-meta"><strong>$30</strong><a href="#shopify">Add Shopify Button</a></div>
       </article>
       <article class="product-card" data-category="shorts">
-        <div class="prod-img shorts-prod"></div>
+        <div class="prod-img shorts-prod" role="img" aria-label="Grind Shorts"></div>
         <h3>Grind Shorts</h3>
         <p>Above-knee training cut.</p>
-        <div><strong>$42</strong><a href="#shopify">Add Shopify Button</a></div>
+        <div class="product-meta"><strong>$42</strong><a href="#shopify">Add Shopify Button</a></div>
       </article>
       <article class="product-card" data-category="hat">
-        <div class="prod-img hat-prod"></div>
+        <div class="prod-img hat-prod" role="img" aria-label="Standard Snapback"></div>
         <h3>Standard Snapback</h3>
         <p>Structured black cap. Clean finish.</p>
-        <div><strong>$35</strong><a href="#shopify">Add Shopify Button</a></div>
+        <div class="product-meta"><strong>$35</strong><a href="#shopify">Add Shopify Button</a></div>
       </article>
     </section>
 
