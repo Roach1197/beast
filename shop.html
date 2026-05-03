@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BeastFit Shop | Iron Discipline Collection</title>
+  <meta name="description" content="Shop the BeastFit Iron Discipline Collection." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar solid" id="topbar">
+    <a class="brand" href="index.html"><span class="brand-mark">◆</span><span>BEAST<span>FIT</span></span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+    <nav class="nav" id="navMenu">
+      <a href="index.html">Home</a>
+      <a class="active" href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="index.html#fit-guide">Fit Guide</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <div class="nav-icons" aria-hidden="true"><span>♙</span><span class="bag">▢<b>0</b></span></div>
+  </header>
+
+  <main class="page-main">
+    <section class="shop-head">
+      <p class="kicker">Current Drop</p>
+      <h1>Iron Discipline Collection</h1>
+      <p>Keep the first drop tight. Hoodies, tees, shorts, and hats. Real checkout connects through Shopify Buy Buttons.</p>
+    </section>
+
+    <section class="shop-filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="hoodie">Hoodies</button>
+      <button class="filter-btn" data-filter="tee">Tees</button>
+      <button class="filter-btn" data-filter="shorts">Shorts</button>
+      <button class="filter-btn" data-filter="hat">Hats</button>
+    </section>
+
+    <section class="shop-grid">
+      <article class="product-card" data-category="hoodie">
+        <div class="prod-img hoodie-prod"></div>
+        <h3>Iron Discipline Hoodie</h3>
+        <p>Oversized heavyweight pump cover.</p>
+        <div><strong>$65</strong><a href="#shopify">Add Shopify Button</a></div>
+      </article>
+      <article class="product-card" data-category="tee">
+        <div class="prod-img tee-prod"></div>
+        <h3>Relentless Tee</h3>
+        <p>Boxy athletic fit. Hard logo hit.</p>
+        <div><strong>$30</strong><a href="#shopify">Add Shopify Button</a></div>
+      </article>
+      <article class="product-card" data-category="shorts">
+        <div class="prod-img shorts-prod"></div>
+        <h3>Grind Shorts</h3>
+        <p>Above-knee training cut.</p>
+        <div><strong>$42</strong><a href="#shopify">Add Shopify Button</a></div>
+      </article>
+      <article class="product-card" data-category="hat">
+        <div class="prod-img hat-prod"></div>
+        <h3>Standard Snapback</h3>
+        <p>Structured black cap. Clean finish.</p>
+        <div><strong>$35</strong><a href="#shopify">Add Shopify Button</a></div>
+      </article>
+    </section>
+
+    <section class="shopify-note" id="shopify">
+      <p class="kicker">Shopify connection</p>
+      <h2>Paste Shopify Buy Button embeds here.</h2>
+      <p>Replace each “Add Shopify Button” link with your Shopify product embed code when products are created.</p>
+      <code>&lt;div id="product-component-YOUR_ID"&gt;&lt;/div&gt;</code>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
