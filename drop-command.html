@@ -49,6 +49,9 @@
     .spotter-mini dl,.gear-file dl{display:grid;gap:10px;margin:18px 0 0}
     .spotter-mini dt,.gear-file dt{color:var(--gold);text-transform:uppercase;font-weight:950;font-size:.66rem}
     .spotter-mini dd,.gear-file dd{margin:-7px 0 0;color:#eee;line-height:1.45;font-size:.84rem}
+    .gear-intel-grid{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+    .gear-intel-card{background:radial-gradient(circle at 90% 10%,rgba(216,170,63,.12),transparent 38px),#090909;border:1px solid rgba(255,255,255,.14);padding:22px;min-height:190px;display:flex;flex-direction:column;justify-content:end}
+    .gear-intel-card span{color:var(--gold);text-transform:uppercase;font-size:.68rem;font-weight:950;margin-bottom:auto}
     .gear-file-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
     .gear-file{padding:22px}
     .gear-file:before{content:"DROP: 001";position:absolute;right:14px;top:14px;border:1px solid rgba(216,170,63,.42);color:var(--gold);padding:6px 8px;font-size:.62rem;font-weight:950}
@@ -63,8 +66,8 @@
     .vault-card h2{font-size:clamp(3.3rem,7vw,7rem);line-height:.9}
     .vault-card p:not(.kicker){max-width:560px;color:#eee;line-height:1.65}
     .mobile-command-dock{display:none}
-    @media(max-width:1180px){.loadout-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.spotter-grid,.gear-file-grid,.field-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.command-hero{grid-template-columns:1fr}.command-hero__visual{min-height:420px}}
-    @media(max-width:760px){.command-hero__copy{padding:74px 18px 38px}.command-hero h1{font-size:clamp(3rem,14vw,4.7rem)}.command-hero__visual{min-height:290px}.command-hero__tag{left:18px;right:18px;bottom:18px;width:auto}.command-section{padding:52px 18px}.command-section:before{left:18px}.command-section__head{display:block}.status-grid,.loadout-grid,.spotter-grid,.gear-file-grid,.field-grid{grid-template-columns:1fr}.status-row{grid-template-columns:104px 1fr}.loadout-card{min-height:0}.vault-card{min-height:330px;padding:34px 22px}.vault-card:before{right:18px;top:18px;font-size:.7rem}.mobile-command-dock{position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:185;display:grid;gap:7px;padding:9px;background:rgba(3,3,3,.95);border:1px solid rgba(216,170,63,.58);box-shadow:0 18px 48px rgba(0,0,0,.58)}.mobile-command-dock__status{color:var(--gold);text-align:center;text-transform:uppercase;font-size:.68rem;font-weight:950;letter-spacing:.08em}.mobile-command-dock__links{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.mobile-command-dock a{min-height:38px;display:grid;place-items:center;background:#0b0b0b;border:1px solid rgba(255,255,255,.14);color:#fff;text-transform:uppercase;font-size:.66rem;font-weight:950}.mobile-command-dock a.active,.mobile-command-dock a:active{background:var(--gold);color:#050505;border-color:var(--gold)}.site-footer{padding-bottom:118px}}
+    @media(max-width:1180px){.loadout-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.spotter-grid,.gear-file-grid,.field-grid,.gear-intel-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.command-hero{grid-template-columns:1fr}.command-hero__visual{min-height:420px}}
+    @media(max-width:760px){.command-hero__copy{padding:74px 18px 38px}.command-hero h1{font-size:clamp(3rem,14vw,4.7rem)}.command-hero__visual{min-height:290px}.command-hero__tag{left:18px;right:18px;bottom:18px;width:auto}.command-section{padding:52px 18px}.command-section:before{left:18px}.command-section__head{display:block}.status-grid,.loadout-grid,.spotter-grid,.gear-file-grid,.field-grid,.gear-intel-grid{grid-template-columns:1fr}.status-row{grid-template-columns:104px 1fr}.loadout-card{min-height:0}.vault-card{min-height:330px;padding:34px 22px}.vault-card:before{right:18px;top:18px;font-size:.7rem}.mobile-command-dock{position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:185;display:grid;gap:7px;padding:9px;background:rgba(3,3,3,.95);border:1px solid rgba(216,170,63,.58);box-shadow:0 18px 48px rgba(0,0,0,.58)}.mobile-command-dock__status{color:var(--gold);text-align:center;text-transform:uppercase;font-size:.68rem;font-weight:950;letter-spacing:.08em}.mobile-command-dock__links{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.mobile-command-dock a{min-height:38px;display:grid;place-items:center;background:#0b0b0b;border:1px solid rgba(255,255,255,.14);color:#fff;text-transform:uppercase;font-size:.66rem;font-weight:950}.mobile-command-dock a.active,.mobile-command-dock a:active{background:var(--gold);color:#050505;border-color:var(--gold)}.site-footer{padding-bottom:118px}}
     @media(prefers-reduced-motion:reduce){.loadout-card,.spotter-mini,.gear-file,.field-card,.mobile-command-dock{transition:none!important}}
   </style>
 </head>
@@ -215,6 +218,39 @@
         </article>
       </div>
       <div class="actions" style="max-width:var(--max);margin:24px auto 0"><a class="btn outline small" href="shop.html">Open Shop Verdicts →</a></div>
+    </section>
+
+    <section class="command-section gear-intelligence-command" data-section="GEAR INTEL">
+      <div class="command-section__head">
+        <div>
+          <p class="kicker">Gear Intelligence</p>
+          <h2>Every piece gets a straight call.</h2>
+        </div>
+        <p>Buy if, don't buy if, fit call, pairing, care, and final verdict. Open the shop sheet before you waste a rep thinking.</p>
+      </div>
+      <div class="gear-intel-grid">
+        <article class="gear-intel-card">
+          <span>Hoodie</span>
+          <h3>Oversized heavyweight</h3>
+          <p>Pump cover, cold starts, streetwear.</p>
+        </article>
+        <article class="gear-intel-card">
+          <span>Tee</span>
+          <h3>Athletic-boxy</h3>
+          <p>Hot sessions, daily wear, clean fit.</p>
+        </article>
+        <article class="gear-intel-card">
+          <span>Shorts</span>
+          <h3>Above-knee athletic</h3>
+          <p>Leg day, movement, conditioning.</p>
+        </article>
+        <article class="gear-intel-card">
+          <span>Snapback</span>
+          <h3>Adjustable structured</h3>
+          <p>Finish the uniform. No overthinking.</p>
+        </article>
+      </div>
+      <div class="actions" style="max-width:var(--max);margin:24px auto 0"><a class="btn gold small" href="shop.html#gear-intelligence">Open Gear Sheets →</a></div>
     </section>
 
     <section class="command-section" data-section="SECTION 04">
