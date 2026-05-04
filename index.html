@@ -26,8 +26,12 @@
     .command-strip__inner:before{content:"COMMAND";position:absolute;right:0;top:-34px;color:rgba(216,170,63,.12);font-family:Anton,Impact,sans-serif;font-size:clamp(3rem,8vw,7rem);line-height:1;pointer-events:none}
     .command-strip h2{font-size:clamp(2.5rem,5vw,5rem);line-height:.94;max-width:760px}
     .command-strip p:not(.kicker){color:#e7dfd1;max-width:680px;line-height:1.65;margin:16px 0 0}
+    .gear-callout{max-width:var(--max);margin:24px auto;padding:26px clamp(20px,4vw,32px);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:26px;align-items:center;background:radial-gradient(circle at 88% 18%,rgba(216,170,63,.12),transparent 26%),linear-gradient(135deg,#050505,#101010);border:1px solid rgba(216,170,63,.32)}
+    .gear-callout h2{font-size:clamp(2.3rem,4.8vw,4.8rem);line-height:.94}
+    .gear-callout p:not(.kicker){max-width:720px;color:#e7dfd1;line-height:1.65;margin:14px 0 0}
     .mobile-command-dock{display:none}
-    @media(max-width:760px){.command-strip{padding:38px 18px}.command-strip__inner{grid-template-columns:1fr}.command-strip__inner:before{right:0;top:-18px;font-size:3.4rem}.mobile-command-dock{position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:185;display:grid;gap:7px;padding:9px;background:rgba(3,3,3,.95);border:1px solid rgba(216,170,63,.58);box-shadow:0 18px 48px rgba(0,0,0,.58)}.mobile-command-dock__status{color:var(--gold);text-align:center;text-transform:uppercase;font-size:.68rem;font-weight:950;letter-spacing:.08em}.mobile-command-dock__links{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.mobile-command-dock a{min-height:38px;display:grid;place-items:center;background:#0b0b0b;border:1px solid rgba(255,255,255,.14);color:#fff;text-transform:uppercase;font-size:.66rem;font-weight:950}.mobile-command-dock a.active,.mobile-command-dock a:active{background:var(--gold);color:#050505;border-color:var(--gold)}body.impact-popup-open .mobile-command-dock{opacity:0;pointer-events:none;transform:translateY(120%)}.site-footer{padding-bottom:118px}}
+    @media(max-width:1120px){.gear-callout{grid-template-columns:1fr}}
+    @media(max-width:760px){.command-strip{padding:38px 18px}.command-strip__inner{grid-template-columns:1fr}.command-strip__inner:before{right:0;top:-18px;font-size:3.4rem}.gear-callout{display:grid;margin:24px 18px;padding:28px 18px}.mobile-command-dock{position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:185;display:grid;gap:7px;padding:9px;background:rgba(3,3,3,.95);border:1px solid rgba(216,170,63,.58);box-shadow:0 18px 48px rgba(0,0,0,.58)}.mobile-command-dock__status{color:var(--gold);text-align:center;text-transform:uppercase;font-size:.68rem;font-weight:950;letter-spacing:.08em}.mobile-command-dock__links{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.mobile-command-dock a{min-height:38px;display:grid;place-items:center;background:#0b0b0b;border:1px solid rgba(255,255,255,.14);color:#fff;text-transform:uppercase;font-size:.66rem;font-weight:950}.mobile-command-dock a.active,.mobile-command-dock a:active{background:var(--gold);color:#050505;border-color:var(--gold)}body.impact-popup-open .mobile-command-dock{opacity:0;pointer-events:none;transform:translateY(120%)}.site-footer{padding-bottom:118px}}
     @media(prefers-reduced-motion:reduce){.mobile-command-dock{transition:none!important}}
   </style>
 </head>
@@ -153,6 +157,15 @@
         </div>
         <a class="btn gold" href="drop-command.html">Open Command Center →</a>
       </div>
+    </section>
+
+    <section class="gear-callout" aria-labelledby="gearCalloutTitle">
+      <div>
+        <p class="kicker">Product intelligence</p>
+        <h2 id="gearCalloutTitle">Gear that calls the set.</h2>
+        <p>No guessing. Open the Gear Sheet and get the fit call, pairing, care, and don't-buy-if before you waste time.</p>
+      </div>
+      <a class="btn outline" href="shop.html#gear-intelligence">Open Gear Sheets →</a>
     </section>
 
     <section class="join-strip" id="contact">
