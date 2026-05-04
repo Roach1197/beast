@@ -152,3 +152,104 @@ if (fitBuilder) {
 
   renderFitBuilder();
 }
+
+const impactPopup = document.getElementById('impactSignupPopup');
+
+if (impactPopup) {
+  const impactStorageKey = 'beastfitImpactPopupDismissed';
+  const closeTriggers = impactPopup.querySelectorAll('[data-impact-close]');
+  const impactForm = impactPopup.querySelector('.impact-popup__form');
+  const impactEmailInput = impactPopup.querySelector('#impactPopupEmail');
+  const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const mobileQuery = window.matchMedia('(max-width: 760px)');
+  let impactTimer = null;
+  let impactHasOpened = false;
+
+  const hasStoredImpactDismissal = () => {
+    try {
+      return window.localStorage.getItem(impactStorageKey) === 'true';
+    } catch (error) {
+      return false;
+    }
+  };
+
+  const storeImpactDismissal = () => {
+    try {
+      window.localStorage.setItem(impactStorageKey, 'true');
+    } catch (error) {
+      try {
+        window.sessionStorage.setItem(impactStorageKey, 'true');
+      } catch (sessionError) {
+        // Storage can be unavailable in strict privacy modes; the popup still closes for this pageview.
+      }
+    }
+  };
+
+  const clearImpactTimer = () => {
+    if (!impactTimer) return;
+    window.clearTimeout(impactTimer);
+    impactTimer = null;
+  };
+
+  const focusImpactEmail = () => {
+    if (!impactEmailInput) return;
+
+    try {
+      impactEmailInput.focus({ preventScroll: true });
+    } catch (error) {
+      impactEmailInput.focus();
+    }
+  };
+
+  const closeImpactPopup = (shouldRemember = true) => {
+    if (shouldRemember) storeImpactDismissal();
+    clearImpactTimer();
+    impactPopup.classList.remove('is-open');
+    impactPopup.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('impact-popup-open');
+  };
+
+  const openImpactPopup = () => {
+    if (impactHasOpened || hasStoredImpactDismissal()) return;
+
+    impactHasOpened = true;
+    clearImpactTimer();
+    window.removeEventListener('scroll', handleImpactScroll);
+    impactPopup.classList.add('is-open');
+    impactPopup.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('impact-popup-open');
+
+    window.setTimeout(focusImpactEmail, motionQuery.matches ? 90 : 950);
+  };
+
+  function handleImpactScroll() {
+    if (!mobileQuery.matches || window.scrollY < 320) return;
+    openImpactPopup();
+  }
+
+  if (!hasStoredImpactDismissal()) {
+    impactTimer = window.setTimeout(openImpactPopup, mobileQuery.matches ? 7600 : 6000);
+    window.addEventListener('scroll', handleImpactScroll, { passive: true });
+
+    document.addEventListener('mouseout', (event) => {
+      if (mobileQuery.matches || event.clientY > 0 || event.relatedTarget) return;
+      openImpactPopup();
+    }, { once: true });
+  }
+
+  closeTriggers.forEach((trigger) => {
+    trigger.addEventListener('click', () => closeImpactPopup(true));
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && impactPopup.classList.contains('is-open')) {
+      closeImpactPopup(true);
+    }
+  });
+
+  if (impactForm) {
+    impactForm.addEventListener('submit', () => {
+      storeImpactDismissal();
+    });
+  }
+}
