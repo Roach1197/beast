@@ -6,6 +6,11 @@
   <title>Contact BeastFit | Orders, Sizing, Collabs</title>
   <meta name="description" content="Contact BeastFit for order questions, sizing help, and wholesale or collaboration inquiries." />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .mobile-command-dock{display:none}
+    @media(max-width:760px){.mobile-command-dock{position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:185;display:grid;gap:7px;padding:9px;background:rgba(3,3,3,.95);border:1px solid rgba(216,170,63,.58);box-shadow:0 18px 48px rgba(0,0,0,.58)}.mobile-command-dock__status{color:var(--gold);text-align:center;text-transform:uppercase;font-size:.68rem;font-weight:950;letter-spacing:.08em}.mobile-command-dock__links{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.mobile-command-dock a{min-height:38px;display:grid;place-items:center;background:#0b0b0b;border:1px solid rgba(255,255,255,.14);color:#fff;text-transform:uppercase;font-size:.66rem;font-weight:950}.mobile-command-dock a:active{background:var(--gold);color:#050505;border-color:var(--gold)}.site-footer{padding-bottom:118px}}
+    @media(prefers-reduced-motion:reduce){.mobile-command-dock{transition:none!important}}
+  </style>
 </head>
 <body>
   <header class="topbar solid" id="topbar">
@@ -14,6 +19,7 @@
     <nav class="nav" id="navMenu" aria-label="Primary navigation">
       <a href="index.html">Home</a>
       <a href="shop.html">Shop</a>
+      <a href="drop-command.html">Command</a>
       <a href="about.html">About</a>
       <a href="fit-guide.html">Fit Guide</a>
       <a class="active" href="contact.html">Contact</a>
@@ -60,7 +66,7 @@
       </form>
     </section>
 
-    <section class="join-strip">
+    <section class="join-strip" id="contactJoin">
       <div class="join-left">
         <span class="join-mark">◆</span>
         <div>
@@ -84,12 +90,23 @@
     <nav class="footer-nav" aria-label="Footer navigation">
       <a href="index.html">Home</a>
       <a href="shop.html">Shop</a>
+      <a href="drop-command.html">Command</a>
       <a href="about.html">About</a>
       <a href="fit-guide.html">Fit Guide</a>
       <a href="contact.html">Contact</a>
     </nav>
     <a class="footer-email" href="mailto:contact@beastfit.com">contact@beastfit.com</a>
   </footer>
+
+  <div class="mobile-command-dock" aria-label="Mobile command dock">
+    <div class="mobile-command-dock__status">DROP 001 ACTIVE</div>
+    <nav class="mobile-command-dock__links" aria-label="Drop shortcuts">
+      <a href="shop.html">Shop</a>
+      <a href="drop-command.html">Command</a>
+      <a href="fit-guide.html">Fit</a>
+      <a href="#contactJoin">Join</a>
+    </nav>
+  </div>
 
   <script src="script.js"></script>
 </body>
