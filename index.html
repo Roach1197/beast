@@ -140,6 +140,16 @@
         <span>▶</span>
       </div>
     </section>
+
+    <section class="drop-locked" aria-labelledby="homeDropLockedTitle">
+      <div class="drop-locked-card">
+        <span class="locked-stamp">Classified</span>
+        <p class="kicker">Drop 002</p>
+        <h2 id="homeDropLockedTitle">Locked</h2>
+        <p>The next run is being built. No previews. No soft launch. Join the crew for early access.</p>
+        <a class="btn gold small" href="#contact" data-focus-join>Unlock Early Access</a>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -187,8 +197,8 @@
         <h2 id="impactPopupTitle">BREAK THE LIMITS</h2>
         <strong>GET 10% OFF YOUR FIRST DROP</strong>
         <p id="impactPopupDesc">Join the BeastFit crew for early access, launch alerts, and first-drop discounts.</p>
-        <form name="beastfit-impact-popup" method="POST" data-netlify="true" class="impact-popup__form">
-          <input type="hidden" name="form-name" value="beastfit-impact-popup" />
+        <form name="beastfit-popup-signup" method="POST" data-netlify="true" class="impact-popup__form">
+          <input type="hidden" name="form-name" value="beastfit-popup-signup" />
           <label for="impactPopupEmail">Email address</label>
           <input id="impactPopupEmail" type="email" name="email" placeholder="Enter your email" autocomplete="email" required />
           <button type="submit">UNLOCK 10%</button>
@@ -196,6 +206,12 @@
         <small>No spam. Just drops.</small>
       </div>
     </section>
+  </div>
+
+  <div class="mobile-drop-bar" id="mobileDropBar" data-mobile-drop-page="home" aria-hidden="true">
+    <button type="button" aria-label="Close drop access bar" data-mobile-drop-close>&times;</button>
+    <span>DROP 001 ACTIVE</span>
+    <a href="shop.html">Shop The Drop &rarr;</a>
   </div>
 
   <script src="script.js"></script>
