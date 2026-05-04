@@ -14,7 +14,13 @@
     .spotter-verdict dl{margin:0;display:grid;gap:9px}
     .spotter-verdict dt{color:var(--gold);text-transform:uppercase;font-weight:950;font-size:.68rem}
     .spotter-verdict dd{margin:-6px 0 0;color:#eee;line-height:1.45;font-size:.84rem}
+    .product-status-row{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0}
+    .product-status-row span{border:1px solid rgba(216,170,63,.42);background:rgba(0,0,0,.62);color:var(--gold);padding:6px 8px;text-transform:uppercase;font-size:.64rem;font-weight:950}
+    .drop-corner-tag{position:absolute;left:14px;top:14px;z-index:4;padding:7px 9px;background:rgba(0,0,0,.74);border:1px solid rgba(216,170,63,.54);color:var(--gold);font-size:.66rem;font-weight:950;text-transform:uppercase}
+    .product-card:after{content:"";position:absolute;inset:8px;z-index:3;pointer-events:none;opacity:.52;background:linear-gradient(var(--gold),var(--gold)) left top/22px 1px no-repeat,linear-gradient(var(--gold),var(--gold)) left top/1px 22px no-repeat,linear-gradient(var(--gold),var(--gold)) right bottom/22px 1px no-repeat,linear-gradient(var(--gold),var(--gold)) right bottom/1px 22px no-repeat;transition:opacity .18s ease,inset .18s ease}
+    .product-card:hover:after,.product-card:active:after{opacity:.95;inset:6px}
     .prod-img{transition:background-size .24s ease,filter .18s ease}
+    .prod-img:before{content:"";position:absolute;inset:10px;border:1px solid rgba(216,170,63,.18);z-index:2;pointer-events:none}
     .product-card:active{border-color:rgba(216,170,63,.72);box-shadow:inset 0 0 0 1px rgba(216,170,63,.22)}
     .product-card:active .prod-img{filter:brightness(1.08)}
     .drop-locked{position:relative;padding:26px clamp(20px,4.8vw,78px) 68px;background:linear-gradient(180deg,#030303,#050505)}
@@ -31,6 +37,9 @@
     body.impact-popup-open .mobile-drop-bar{opacity:0;pointer-events:none;transform:translateY(120%)}
     @media(max-width:760px){.drop-locked{padding:22px 18px 46px}.drop-locked-card{min-height:300px;padding:30px 22px}.locked-stamp{right:18px;top:18px;font-size:.7rem}.mobile-drop-bar.is-visible{display:flex;opacity:1;pointer-events:auto;transform:translateY(0)}body.has-mobile-drop .site-footer{padding-bottom:104px}}
     @media(prefers-reduced-motion:reduce){.spotter-toggle,.prod-img,.mobile-drop-bar{transition:none!important}}
+    .mobile-command-dock{display:none}
+    @media(max-width:760px){.mobile-command-dock{position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:185;display:grid;gap:7px;padding:9px;background:rgba(3,3,3,.95);border:1px solid rgba(216,170,63,.58);box-shadow:0 18px 48px rgba(0,0,0,.58)}.mobile-command-dock__status{color:var(--gold);text-align:center;text-transform:uppercase;font-size:.68rem;font-weight:950;letter-spacing:.08em}.mobile-command-dock__links{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.mobile-command-dock a{min-height:38px;display:grid;place-items:center;background:#0b0b0b;border:1px solid rgba(255,255,255,.14);color:#fff;text-transform:uppercase;font-size:.66rem;font-weight:950}.mobile-command-dock a.active,.mobile-command-dock a:active{background:var(--gold);color:#050505;border-color:var(--gold)}body.impact-popup-open .mobile-command-dock{opacity:0;pointer-events:none;transform:translateY(120%)}.site-footer{padding-bottom:118px}}
+    @media(prefers-reduced-motion:reduce){.mobile-command-dock{transition:none!important}}
   </style>
 </head>
 <body>
@@ -40,6 +49,7 @@
     <nav class="nav" id="navMenu" aria-label="Primary navigation">
       <a href="index.html">Home</a>
       <a class="active" href="shop.html">Shop</a>
+      <a href="drop-command.html">Command</a>
       <a href="about.html">About</a>
       <a href="fit-guide.html">Fit Guide</a>
       <a href="contact.html">Contact</a>
@@ -74,7 +84,9 @@
 
     <section class="shop-grid">
       <article class="product-card" data-category="hoodie">
+        <span class="drop-corner-tag">Drop 001</span>
         <div class="prod-img hoodie-prod" role="img" aria-label="Iron Discipline Hoodie"></div>
+        <div class="product-status-row"><span>Drop 001</span><span>Active</span></div>
         <h3>Iron Discipline Hoodie</h3>
         <p>Oversized heavyweight pump cover.</p>
         <div class="product-meta"><strong>$65</strong><!-- Replace with live Shopify hoodies collection URL when ready. --><a href="https://YOUR-SHOPIFY-STORE.myshopify.com/collections/hoodies">Shop Hoodies</a></div>
@@ -83,7 +95,7 @@
           <h4>Spotter Verdict</h4>
           <dl>
             <dt>Buy if:</dt><dd>You want a heavy pump cover, cold-start layer, or streetwear fit.</dd>
-            <dt>Skip if:</dt><dd>You want lightweight gear for hot training sessions.</dd>
+            <dt>Don't buy if:</dt><dd>You want lightweight gear for hot training sessions.</dd>
             <dt>Fit call:</dt><dd>Oversized. True size for relaxed. Size down for cleaner fit.</dd>
             <dt>Best pairing:</dt><dd>Standard Snapback + Grind Shorts.</dd>
             <dt>Final call:</dt><dd>The main drop piece.</dd>
@@ -91,7 +103,9 @@
         </div>
       </article>
       <article class="product-card" data-category="tee">
+        <span class="drop-corner-tag">Drop 001</span>
         <div class="prod-img tee-prod" role="img" aria-label="Relentless Tee"></div>
+        <div class="product-status-row"><span>Drop 001</span><span>Active</span></div>
         <h3>Relentless Tee</h3>
         <p>Boxy athletic fit. Hard logo hit.</p>
         <div class="product-meta"><strong>$30</strong><!-- Replace with live Shopify tees collection URL when ready. --><a href="https://YOUR-SHOPIFY-STORE.myshopify.com/collections/tees">Shop Tees</a></div>
@@ -100,7 +114,7 @@
           <h4>Spotter Verdict</h4>
           <dl>
             <dt>Buy if:</dt><dd>You want a cleaner training fit that still looks aggressive.</dd>
-            <dt>Skip if:</dt><dd>You want oversized pump-cover energy.</dd>
+            <dt>Don't buy if:</dt><dd>You want oversized pump-cover energy.</dd>
             <dt>Fit call:</dt><dd>Athletic-boxy. True size for clean fit. Size up for more room.</dd>
             <dt>Best pairing:</dt><dd>Grind Shorts + Standard Snapback.</dd>
             <dt>Final call:</dt><dd>The everyday training piece.</dd>
@@ -108,7 +122,9 @@
         </div>
       </article>
       <article class="product-card" data-category="shorts">
+        <span class="drop-corner-tag">Drop 001</span>
         <div class="prod-img shorts-prod" role="img" aria-label="Grind Shorts"></div>
+        <div class="product-status-row"><span>Drop 001</span><span>Active</span></div>
         <h3>Grind Shorts</h3>
         <p>Above-knee training cut.</p>
         <div class="product-meta"><strong>$42</strong><!-- Replace with live Shopify shorts collection URL when ready. --><a href="https://YOUR-SHOPIFY-STORE.myshopify.com/collections/shorts">Shop Shorts</a></div>
@@ -117,7 +133,7 @@
           <h4>Spotter Verdict</h4>
           <dl>
             <dt>Buy if:</dt><dd>You want above-knee training shorts built for movement.</dd>
-            <dt>Skip if:</dt><dd>You want long, baggy lounge shorts.</dd>
+            <dt>Don't buy if:</dt><dd>You want long, baggy lounge shorts.</dd>
             <dt>Fit call:</dt><dd>True size for training. Size up if you want more thigh room.</dd>
             <dt>Best pairing:</dt><dd>Relentless Tee or Iron Discipline Hoodie.</dd>
             <dt>Final call:</dt><dd>Leg day ready.</dd>
@@ -125,7 +141,9 @@
         </div>
       </article>
       <article class="product-card" data-category="hat">
+        <span class="drop-corner-tag">Drop 001</span>
         <div class="prod-img hat-prod" role="img" aria-label="Standard Snapback"></div>
+        <div class="product-status-row"><span>Drop 001</span><span>Active</span></div>
         <h3>Standard Snapback</h3>
         <p>Structured black cap. Clean finish.</p>
         <div class="product-meta"><strong>$35</strong><!-- Replace with live Shopify hats collection URL when ready. --><a href="https://YOUR-SHOPIFY-STORE.myshopify.com/collections/hats">Shop Hats</a></div>
@@ -134,7 +152,7 @@
           <h4>Spotter Verdict</h4>
           <dl>
             <dt>Buy if:</dt><dd>You want the easiest way to finish the fit.</dd>
-            <dt>Skip if:</dt><dd>You hate structured hats.</dd>
+            <dt>Don't buy if:</dt><dd>You hate structured hats.</dd>
             <dt>Fit call:</dt><dd>Adjustable snapback/trucker fit.</dd>
             <dt>Best pairing:</dt><dd>Everything in Drop 001.</dd>
             <dt>Final call:</dt><dd>No overthinking required.</dd>
@@ -170,7 +188,7 @@
         <span class="locked-stamp">Classified</span>
         <p class="kicker">Drop 002</p>
         <h2 id="shopDropLockedTitle">Locked</h2>
-        <p>The next run is being built. No previews. No soft launch. Join the crew for early access.</p>
+        <p><strong>DROP 002 IS LOCKED.</strong> The next run is being built. Join the crew before it opens.</p>
         <a class="btn gold small" href="index.html#contact">Unlock Early Access</a>
       </div>
     </section>
@@ -186,6 +204,7 @@
     <nav class="footer-nav" aria-label="Footer navigation">
       <a href="index.html">Home</a>
       <a href="shop.html">Shop</a>
+      <a href="drop-command.html">Command</a>
       <a href="about.html">About</a>
       <a href="fit-guide.html">Fit Guide</a>
       <a href="contact.html">Contact</a>
@@ -193,10 +212,14 @@
     <a class="footer-email" href="mailto:contact@beastfit.com">contact@beastfit.com</a>
   </footer>
 
-  <div class="mobile-drop-bar" id="mobileDropBar" data-mobile-drop-page="shop" aria-hidden="true">
-    <button type="button" aria-label="Close drop access bar" data-mobile-drop-close>&times;</button>
-    <span>DROP 001 ACTIVE</span>
-    <a href="shop.html">Shop The Drop &rarr;</a>
+  <div class="mobile-command-dock" aria-label="Mobile command dock">
+    <div class="mobile-command-dock__status">DROP 001 ACTIVE</div>
+    <nav class="mobile-command-dock__links" aria-label="Drop shortcuts">
+      <a class="active" href="shop.html">Shop</a>
+      <a href="drop-command.html">Command</a>
+      <a href="fit-guide.html">Fit</a>
+      <a href="index.html#contact">Join</a>
+    </nav>
   </div>
 
   <script src="script.js"></script>
