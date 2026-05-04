@@ -21,6 +21,14 @@
     body.impact-popup-open .mobile-drop-bar{opacity:0;pointer-events:none;transform:translateY(120%)}
     @media(max-width:760px){.drop-locked{padding:22px 18px 46px}.drop-locked-card{min-height:300px;padding:30px 22px}.locked-stamp{right:18px;top:18px;font-size:.7rem}.mobile-drop-bar.is-visible{display:flex;opacity:1;pointer-events:auto;transform:translateY(0)}body.has-mobile-drop .site-footer{padding-bottom:104px}}
     @media(prefers-reduced-motion:reduce){.mobile-drop-bar{transition:none!important}}
+    .command-strip{padding:54px clamp(20px,4.8vw,78px);background:linear-gradient(135deg,#040404,#101010 58%,#030303);border-block:1px solid rgba(216,170,63,.34)}
+    .command-strip__inner{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;position:relative}
+    .command-strip__inner:before{content:"COMMAND";position:absolute;right:0;top:-34px;color:rgba(216,170,63,.12);font-family:Anton,Impact,sans-serif;font-size:clamp(3rem,8vw,7rem);line-height:1;pointer-events:none}
+    .command-strip h2{font-size:clamp(2.5rem,5vw,5rem);line-height:.94;max-width:760px}
+    .command-strip p:not(.kicker){color:#e7dfd1;max-width:680px;line-height:1.65;margin:16px 0 0}
+    .mobile-command-dock{display:none}
+    @media(max-width:760px){.command-strip{padding:38px 18px}.command-strip__inner{grid-template-columns:1fr}.command-strip__inner:before{right:0;top:-18px;font-size:3.4rem}.mobile-command-dock{position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:185;display:grid;gap:7px;padding:9px;background:rgba(3,3,3,.95);border:1px solid rgba(216,170,63,.58);box-shadow:0 18px 48px rgba(0,0,0,.58)}.mobile-command-dock__status{color:var(--gold);text-align:center;text-transform:uppercase;font-size:.68rem;font-weight:950;letter-spacing:.08em}.mobile-command-dock__links{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.mobile-command-dock a{min-height:38px;display:grid;place-items:center;background:#0b0b0b;border:1px solid rgba(255,255,255,.14);color:#fff;text-transform:uppercase;font-size:.66rem;font-weight:950}.mobile-command-dock a.active,.mobile-command-dock a:active{background:var(--gold);color:#050505;border-color:var(--gold)}body.impact-popup-open .mobile-command-dock{opacity:0;pointer-events:none;transform:translateY(120%)}.site-footer{padding-bottom:118px}}
+    @media(prefers-reduced-motion:reduce){.mobile-command-dock{transition:none!important}}
   </style>
 </head>
 <body>
@@ -35,6 +43,7 @@
     <nav class="nav" id="navMenu" aria-label="Primary navigation">
       <a class="active" href="index.html">Home</a>
       <a href="shop.html">Shop</a>
+      <a href="drop-command.html">Command</a>
       <a href="about.html">About</a>
       <a href="fit-guide.html">Fit Guide</a>
       <a href="contact.html">Contact</a>
@@ -135,6 +144,17 @@
       </div>
     </section>
 
+    <section class="command-strip" aria-labelledby="homeCommandTitle">
+      <div class="command-strip__inner">
+        <div>
+          <p class="kicker">Drop operating system</p>
+          <h2 id="homeCommandTitle">Enter the Drop Command Center</h2>
+          <p>Loadouts. Gear files. Spotter verdicts. Locked drops. Everything in Drop 001, organized like a system.</p>
+        </div>
+        <a class="btn gold" href="drop-command.html">Open Command Center →</a>
+      </div>
+    </section>
+
     <section class="join-strip" id="contact">
       <div class="join-left">
         <span class="join-mark">◆</span>
@@ -162,7 +182,7 @@
         <span class="locked-stamp">Classified</span>
         <p class="kicker">Drop 002</p>
         <h2 id="homeDropLockedTitle">Locked</h2>
-        <p>The next run is being built. No previews. No soft launch. Join the crew for early access.</p>
+        <p><strong>DROP 002 IS LOCKED.</strong> The next run is being built. Join the crew before it opens.</p>
         <a class="btn gold small" href="#contact" data-focus-join>Unlock Early Access</a>
       </div>
     </section>
@@ -176,6 +196,7 @@
     <nav class="footer-nav" aria-label="Footer navigation">
       <a href="index.html">Home</a>
       <a href="shop.html">Shop</a>
+      <a href="drop-command.html">Command</a>
       <a href="about.html">About</a>
       <a href="fit-guide.html">Fit Guide</a>
       <a href="contact.html">Contact</a>
@@ -224,10 +245,14 @@
     </section>
   </div>
 
-  <div class="mobile-drop-bar" id="mobileDropBar" data-mobile-drop-page="home" aria-hidden="true">
-    <button type="button" aria-label="Close drop access bar" data-mobile-drop-close>&times;</button>
-    <span>DROP 001 ACTIVE</span>
-    <a href="shop.html">Shop The Drop &rarr;</a>
+  <div class="mobile-command-dock" aria-label="Mobile command dock">
+    <div class="mobile-command-dock__status">DROP 001 ACTIVE</div>
+    <nav class="mobile-command-dock__links" aria-label="Drop shortcuts">
+      <a href="shop.html">Shop</a>
+      <a href="drop-command.html">Command</a>
+      <a href="fit-guide.html">Fit</a>
+      <a href="#contact" data-focus-join>Join</a>
+    </nav>
   </div>
 
   <script src="script.js"></script>
