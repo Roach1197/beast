@@ -167,7 +167,13 @@ if (impactPopup) {
 
   const hasStoredImpactDismissal = () => {
     try {
-      return window.localStorage.getItem(impactStorageKey) === 'true';
+      if (window.localStorage.getItem(impactStorageKey) === 'true') return true;
+    } catch (error) {
+      // Fall through to session storage.
+    }
+
+    try {
+      return window.sessionStorage.getItem(impactStorageKey) === 'true';
     } catch (error) {
       return false;
     }
@@ -176,12 +182,15 @@ if (impactPopup) {
   const storeImpactDismissal = () => {
     try {
       window.localStorage.setItem(impactStorageKey, 'true');
+      return;
     } catch (error) {
-      try {
-        window.sessionStorage.setItem(impactStorageKey, 'true');
-      } catch (sessionError) {
-        // Storage can be unavailable in strict privacy modes; the popup still closes for this pageview.
-      }
+      // Fall through to session storage.
+    }
+
+    try {
+      window.sessionStorage.setItem(impactStorageKey, 'true');
+    } catch (error) {
+      // Storage can be unavailable in strict privacy modes; the popup still closes for this pageview.
     }
   };
 
@@ -201,9 +210,22 @@ if (impactPopup) {
     }
   };
 
+  function handleImpactScroll() {
+    if (!mobileQuery.matches || window.scrollY < 320) return;
+    openImpactPopup();
+  }
+
+  function handleImpactExit(event) {
+    if (mobileQuery.matches || event.clientY > 0 || event.relatedTarget) return;
+    document.removeEventListener('mouseout', handleImpactExit);
+    openImpactPopup();
+  }
+
   const closeImpactPopup = (shouldRemember = true) => {
     if (shouldRemember) storeImpactDismissal();
     clearImpactTimer();
+    window.removeEventListener('scroll', handleImpactScroll);
+    document.removeEventListener('mouseout', handleImpactExit);
     impactPopup.classList.remove('is-open');
     impactPopup.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('impact-popup-open');
@@ -215,6 +237,7 @@ if (impactPopup) {
     impactHasOpened = true;
     clearImpactTimer();
     window.removeEventListener('scroll', handleImpactScroll);
+    document.removeEventListener('mouseout', handleImpactExit);
     impactPopup.classList.add('is-open');
     impactPopup.setAttribute('aria-hidden', 'false');
     document.body.classList.add('impact-popup-open');
@@ -222,19 +245,10 @@ if (impactPopup) {
     window.setTimeout(focusImpactEmail, motionQuery.matches ? 90 : 950);
   };
 
-  function handleImpactScroll() {
-    if (!mobileQuery.matches || window.scrollY < 320) return;
-    openImpactPopup();
-  }
-
   if (!hasStoredImpactDismissal()) {
     impactTimer = window.setTimeout(openImpactPopup, mobileQuery.matches ? 7600 : 6000);
     window.addEventListener('scroll', handleImpactScroll, { passive: true });
-
-    document.addEventListener('mouseout', (event) => {
-      if (mobileQuery.matches || event.clientY > 0 || event.relatedTarget) return;
-      openImpactPopup();
-    }, { once: true });
+    document.addEventListener('mouseout', handleImpactExit);
   }
 
   closeTriggers.forEach((trigger) => {
