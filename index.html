@@ -157,6 +157,47 @@
     <a class="footer-email" href="mailto:contact@beastfit.com">contact@beastfit.com</a>
   </footer>
 
+  <div class="impact-popup" id="impactSignupPopup" aria-hidden="true">
+    <div class="impact-popup__overlay" data-impact-close></div>
+    <section class="impact-popup__dialog" role="dialog" aria-modal="true" aria-labelledby="impactPopupTitle" aria-describedby="impactPopupDesc">
+      <button class="impact-popup__close" type="button" aria-label="Close signup offer" data-impact-close>&times;</button>
+
+      <div class="impact-popup__visual" aria-hidden="true">
+        <!-- Future impact image swap: add assets/popup-impact.jpg or assets/popup-impact.png and update the .impact-popup__image background in style.css. -->
+        <div class="impact-popup__image"></div>
+        <div class="impact-popup__flash"></div>
+        <div class="impact-popup__cracks"></div>
+        <div class="impact-popup__debris">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="impact-popup__dumbbell">
+          <i></i>
+          <b></b>
+          <i></i>
+        </div>
+      </div>
+
+      <div class="impact-popup__content">
+        <p class="kicker">First Drop Access</p>
+        <h2 id="impactPopupTitle">BREAK THE LIMITS</h2>
+        <strong>GET 10% OFF YOUR FIRST DROP</strong>
+        <p id="impactPopupDesc">Join the BeastFit crew for early access, launch alerts, and first-drop discounts.</p>
+        <form name="beastfit-impact-popup" method="POST" data-netlify="true" class="impact-popup__form">
+          <input type="hidden" name="form-name" value="beastfit-impact-popup" />
+          <label for="impactPopupEmail">Email address</label>
+          <input id="impactPopupEmail" type="email" name="email" placeholder="Enter your email" autocomplete="email" required />
+          <button type="submit">UNLOCK 10%</button>
+        </form>
+        <small>No spam. Just drops.</small>
+      </div>
+    </section>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
