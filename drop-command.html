@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drop Command Center | BeastFit Drop 001</title>
+  <meta name="description" content="Enter the BeastFit Drop Command Center for Drop 001 loadouts, gear files, Spotter Verdicts, and locked drop access." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .command-main{background:#030303}
+    .command-hero{min-height:calc(100vh - 64px);display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,45%);align-items:stretch;padding:0;background:#030303;border-bottom:1px solid rgba(216,170,63,.42);overflow:hidden}
+    .command-hero__copy{display:flex;flex-direction:column;justify-content:center;padding:120px clamp(20px,5vw,78px) 70px;background:radial-gradient(circle at 12% 12%,rgba(216,170,63,.11),transparent 32%),linear-gradient(125deg,#020202,#0a0a0a 62%,#111)}
+    .command-hero h1{font-size:clamp(3.8rem,7.4vw,7.4rem);line-height:.9;max-width:900px}
+    .command-hero p:not(.kicker){max-width:620px;color:#e7dfd1;line-height:1.65;font-size:1.08rem;margin:22px 0 30px}
+    .command-hero__visual{position:relative;min-height:560px;background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.5)),url('assets/product-display.jpg') center 42%/cover no-repeat}
+    .command-hero__visual:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.34),transparent 34%),radial-gradient(circle at 70% 26%,rgba(216,170,63,.14),transparent 35%)}
+    .command-hero__tag{position:absolute;right:28px;bottom:28px;width:min(310px,calc(100% - 56px));padding:22px;background:rgba(0,0,0,.76);border:1px solid rgba(216,170,63,.52);box-shadow:0 24px 70px rgba(0,0,0,.52)}
+    .command-hero__tag span{display:block;color:var(--gold);text-transform:uppercase;font-weight:950;font-size:.72rem}
+    .command-hero__tag strong{display:block;margin-top:8px;font-family:Anton,Impact,sans-serif;text-transform:uppercase;font-size:1.7rem}
+    .command-section{position:relative;padding:68px clamp(20px,4.8vw,78px);border-bottom:1px solid rgba(255,255,255,.1);background:linear-gradient(180deg,#030303,#070707)}
+    .command-section:before{content:attr(data-section);position:absolute;left:clamp(20px,4.8vw,78px);top:26px;color:rgba(216,170,63,.28);font-weight:950;text-transform:uppercase;font-size:.72rem}
+    .command-section__head{max-width:var(--max);margin:0 auto 24px;display:flex;justify-content:space-between;gap:24px;align-items:end}
+    .command-section__head h2{font-size:clamp(2.6rem,5vw,5rem);line-height:.92}
+    .command-section__head p{max-width:620px;color:var(--muted);line-height:1.65;margin:0}
+    .status-grid,.loadout-grid,.spotter-grid,.gear-file-grid,.field-grid{max-width:var(--max);margin:0 auto;display:grid;gap:18px}
+    .status-grid{grid-template-columns:1.1fr .9fr}
+    .status-card,.loadout-card,.spotter-mini,.gear-file,.field-card,.vault-card{position:relative;overflow:hidden;background:radial-gradient(circle at 90% 8%,rgba(216,170,63,.1),transparent 42px),#0a0a0a;border:1px solid rgba(255,255,255,.14);box-shadow:0 22px 60px rgba(0,0,0,.26)}
+    .status-card{padding:30px;min-height:280px}
+    .status-card.locked{opacity:.84;background:linear-gradient(180deg,#090909,#050505)}
+    .status-card h3,.loadout-card h3,.spotter-mini h3,.gear-file h3,.field-card h3{font-size:clamp(1.8rem,3vw,3rem);line-height:1}
+    .status-card h3 span{display:block;color:var(--gold)}
+    .status-list{display:grid;gap:10px;margin-top:24px}
+    .status-row{display:grid;grid-template-columns:130px 1fr;gap:12px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.1);text-transform:uppercase;font-size:.82rem}
+    .status-row strong{color:var(--gold)}
+    .status-row span{color:#eee;font-weight:900}
+    .loadout-grid{grid-template-columns:repeat(5,minmax(0,1fr))}
+    .loadout-card{display:flex;flex-direction:column;min-height:440px}
+    .loadout-card__image{min-height:180px;background:#111 center 42%/cover no-repeat;border-bottom:1px solid rgba(216,170,63,.24)}
+    .loadout-card.heavy .loadout-card__image,.loadout-card.pump .loadout-card__image{background-image:url('assets/hoodies.jpg')}
+    .loadout-card.hot .loadout-card__image{background-image:url('assets/tees.jpg')}
+    .loadout-card.street .loadout-card__image{background-image:url('assets/product-rack.jpg')}
+    .loadout-card.black .loadout-card__image{background-image:url('assets/drop-flatlay.jpg')}
+    .loadout-card__body{padding:20px;display:flex;flex-direction:column;gap:12px;flex:1}
+    .loadout-card ul{list-style:none;margin:0;padding:0;display:grid;gap:7px;color:#eee;text-transform:uppercase;font-size:.72rem;font-weight:950}
+    .loadout-card p{color:var(--muted);line-height:1.55;margin:0}
+    .loadout-card .btn{margin-top:auto;width:100%}
+    .spotter-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .spotter-mini{padding:22px}
+    .spotter-mini dl,.gear-file dl{display:grid;gap:10px;margin:18px 0 0}
+    .spotter-mini dt,.gear-file dt{color:var(--gold);text-transform:uppercase;font-weight:950;font-size:.66rem}
+    .spotter-mini dd,.gear-file dd{margin:-7px 0 0;color:#eee;line-height:1.45;font-size:.84rem}
+    .gear-file-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .gear-file{padding:22px}
+    .gear-file:before{content:"DROP: 001";position:absolute;right:14px;top:14px;border:1px solid rgba(216,170,63,.42);color:var(--gold);padding:6px 8px;font-size:.62rem;font-weight:950}
+    .field-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .field-card{min-height:220px;padding:24px;display:flex;flex-direction:column;justify-content:end;background:linear-gradient(180deg,rgba(0,0,0,.2),rgba(0,0,0,.9)),url('assets/drop-flatlay.jpg') center/cover no-repeat}
+    .field-card:nth-child(2){background-image:linear-gradient(180deg,rgba(0,0,0,.2),rgba(0,0,0,.9)),url('assets/story-lifter.jpg')}
+    .field-card:nth-child(3){background-image:linear-gradient(180deg,rgba(0,0,0,.2),rgba(0,0,0,.9)),url('assets/texture.jpg')}
+    .field-card:nth-child(4){background-image:linear-gradient(180deg,rgba(0,0,0,.2),rgba(0,0,0,.9)),url('assets/product-rack.jpg')}
+    .field-card p{color:#eee;line-height:1.55;margin:10px 0 0}
+    .vault-card{max-width:var(--max);min-height:340px;margin:0 auto;padding:46px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;background:linear-gradient(90deg,rgba(0,0,0,.94),rgba(0,0,0,.76) 58%,rgba(0,0,0,.4)),url('assets/product-rack.jpg') center 45%/cover no-repeat;border-color:rgba(216,170,63,.5)}
+    .vault-card:before{content:"LOCKED";position:absolute;right:34px;top:34px;border:1px solid rgba(216,170,63,.58);color:var(--gold);background:rgba(0,0,0,.55);padding:12px 18px;text-transform:uppercase;font-weight:950;transform:rotate(7deg)}
+    .vault-card h2{font-size:clamp(3.3rem,7vw,7rem);line-height:.9}
+    .vault-card p:not(.kicker){max-width:560px;color:#eee;line-height:1.65}
+    .mobile-command-dock{display:none}
+    @media(max-width:1180px){.loadout-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.spotter-grid,.gear-file-grid,.field-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.command-hero{grid-template-columns:1fr}.command-hero__visual{min-height:420px}}
+    @media(max-width:760px){.command-hero__copy{padding:74px 18px 38px}.command-hero h1{font-size:clamp(3rem,14vw,4.7rem)}.command-hero__visual{min-height:290px}.command-hero__tag{left:18px;right:18px;bottom:18px;width:auto}.command-section{padding:52px 18px}.command-section:before{left:18px}.command-section__head{display:block}.status-grid,.loadout-grid,.spotter-grid,.gear-file-grid,.field-grid{grid-template-columns:1fr}.status-row{grid-template-columns:104px 1fr}.loadout-card{min-height:0}.vault-card{min-height:330px;padding:34px 22px}.vault-card:before{right:18px;top:18px;font-size:.7rem}.mobile-command-dock{position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:185;display:grid;gap:7px;padding:9px;background:rgba(3,3,3,.95);border:1px solid rgba(216,170,63,.58);box-shadow:0 18px 48px rgba(0,0,0,.58)}.mobile-command-dock__status{color:var(--gold);text-align:center;text-transform:uppercase;font-size:.68rem;font-weight:950;letter-spacing:.08em}.mobile-command-dock__links{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.mobile-command-dock a{min-height:38px;display:grid;place-items:center;background:#0b0b0b;border:1px solid rgba(255,255,255,.14);color:#fff;text-transform:uppercase;font-size:.66rem;font-weight:950}.mobile-command-dock a.active,.mobile-command-dock a:active{background:var(--gold);color:#050505;border-color:var(--gold)}.site-footer{padding-bottom:118px}}
+    @media(prefers-reduced-motion:reduce){.loadout-card,.spotter-mini,.gear-file,.field-card,.mobile-command-dock{transition:none!important}}
+  </style>
+</head>
+<body>
+  <header class="topbar solid" id="topbar">
+    <a class="brand" href="index.html"><span class="brand-mark">&#9670;</span><span>BEAST<span>FIT</span></span></a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-controls="navMenu" aria-expanded="false">&#9776;</button>
+    <nav class="nav" id="navMenu" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a class="active" href="drop-command.html">Command</a>
+      <a href="about.html">About</a>
+      <a href="fit-guide.html">Fit Guide</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-icons" aria-hidden="true"><span>&#9817;</span><span class="bag">&#9634;<b>0</b></span></div>
+  </header>
+
+  <main class="page-main command-main">
+    <section class="command-hero">
+      <div class="command-hero__copy">
+        <p class="kicker">Drop 001 · Iron Discipline</p>
+        <h1>The standard does not care how you feel.</h1>
+        <p>A first-run uniform for cold starts, ugly reps, and the work nobody claps for.</p>
+        <div class="actions">
+          <a class="btn gold" href="shop.html">Shop Drop 001 →</a>
+          <a class="btn outline" href="fit-guide.html#build-uniform">Build Your Uniform →</a>
+        </div>
+      </div>
+      <div class="command-hero__visual" role="img" aria-label="BeastFit product drop command visual">
+        <aside class="command-hero__tag">
+          <span>Live drop feed</span>
+          <strong>Drop 001 Active</strong>
+          <p>Hoodies · Tees · Shorts · Hats</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="command-section" data-section="SECTION 01">
+      <div class="command-section__head">
+        <div>
+          <p class="kicker">Drop Status</p>
+          <h2>Status board</h2>
+        </div>
+        <p>Dark gym locker energy. No countdown theater. Just what is live, what is locked, and what is not guaranteed.</p>
+      </div>
+      <div class="status-grid">
+        <article class="status-card">
+          <h3>DROP 001 <span>Iron Discipline</span></h3>
+          <div class="status-list">
+            <div class="status-row"><strong>Status:</strong><span>Active</span></div>
+            <div class="status-row"><strong>Gear:</strong><span>Hoodies · Tees · Shorts · Hats</span></div>
+            <div class="status-row"><strong>Access:</strong><span>Open</span></div>
+            <div class="status-row"><strong>Restock:</strong><span>Not guaranteed</span></div>
+          </div>
+        </article>
+        <article class="status-card locked">
+          <h3>DROP 002 <span>Locked</span></h3>
+          <div class="status-list">
+            <div class="status-row"><strong>Status:</strong><span>Locked</span></div>
+            <div class="status-row"><strong>Access:</strong><span>Crew only</span></div>
+            <div class="status-row"><strong>Preview:</strong><span>Classified</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="command-section" data-section="SECTION 02">
+      <div class="command-section__head">
+        <div>
+          <p class="kicker">Choose your loadout</p>
+          <h2>Lock the uniform</h2>
+        </div>
+      </div>
+      <div class="loadout-grid">
+        <article class="loadout-card heavy">
+          <div class="loadout-card__image" role="img" aria-label="Heavy Day loadout"></div>
+          <div class="loadout-card__body">
+            <h3>Heavy Day</h3>
+            <ul><li>Iron Discipline Hoodie</li><li>Grind Shorts</li><li>Snapback</li></ul>
+            <p>Built for cold starts, heavy work, and oversized pump-cover energy.</p>
+            <a class="btn gold small" href="shop.html">Shop This Loadout →</a>
+          </div>
+        </article>
+        <article class="loadout-card hot">
+          <div class="loadout-card__image" role="img" aria-label="Hot Gym loadout"></div>
+          <div class="loadout-card__body">
+            <h3>Hot Gym</h3>
+            <ul><li>Relentless Tee</li><li>Grind Shorts</li></ul>
+            <p>Cleaner fit. More movement. Less bulk.</p>
+            <a class="btn gold small" href="shop.html">Shop This Loadout →</a>
+          </div>
+        </article>
+        <article class="loadout-card pump">
+          <div class="loadout-card__image" role="img" aria-label="Pump Cover loadout"></div>
+          <div class="loadout-card__body">
+            <h3>Pump Cover</h3>
+            <ul><li>Iron Discipline Hoodie</li><li>Snapback</li></ul>
+            <p>Oversized top. Hard silhouette. No soft energy.</p>
+            <a class="btn gold small" href="shop.html">Shop This Loadout →</a>
+          </div>
+        </article>
+        <article class="loadout-card street">
+          <div class="loadout-card__image" role="img" aria-label="Streetwear loadout"></div>
+          <div class="loadout-card__body">
+            <h3>Streetwear</h3>
+            <ul><li>Hoodie</li><li>Hat</li></ul>
+            <p>Dark, simple, heavy. Gym-first but street-ready.</p>
+            <a class="btn gold small" href="shop.html">Shop This Loadout →</a>
+          </div>
+        </article>
+        <article class="loadout-card black">
+          <div class="loadout-card__image" role="img" aria-label="All Black loadout"></div>
+          <div class="loadout-card__body">
+            <h3>All Black</h3>
+            <ul><li>Black/gold rotation</li></ul>
+            <p>Minimal color. Maximum intent.</p>
+            <a class="btn gold small" href="shop.html">Shop This Loadout →</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="command-section" data-section="SECTION 03">
+      <div class="command-section__head">
+        <div>
+          <p class="kicker">Spotter System</p>
+          <h2>The site calls the set.</h2>
+        </div>
+        <p>Every product gets a straight answer: buy if, don't buy if, fit call, best pairing, final verdict.</p>
+      </div>
+      <div class="spotter-grid">
+        <article class="spotter-mini">
+          <h3>Hoodie Verdict</h3>
+          <dl><dt>Buy if</dt><dd>You want the main pump-cover layer.</dd><dt>Don't buy if</dt><dd>You need hot-session lightweight gear.</dd><dt>Fit call</dt><dd>Oversized heavyweight.</dd><dt>Final call</dt><dd>The main drop piece.</dd></dl>
+        </article>
+        <article class="spotter-mini">
+          <h3>Tee Verdict</h3>
+          <dl><dt>Buy if</dt><dd>You want clean training fit.</dd><dt>Don't buy if</dt><dd>You want oversized hoodie energy.</dd><dt>Fit call</dt><dd>Athletic-boxy.</dd><dt>Final call</dt><dd>The clean training piece.</dd></dl>
+        </article>
+        <article class="spotter-mini">
+          <h3>Shorts Verdict</h3>
+          <dl><dt>Buy if</dt><dd>You want above-knee movement.</dd><dt>Don't buy if</dt><dd>You want baggy lounge shorts.</dd><dt>Fit call</dt><dd>True size for training.</dd><dt>Final call</dt><dd>Built to move.</dd></dl>
+        </article>
+        <article class="spotter-mini">
+          <h3>Hat Verdict</h3>
+          <dl><dt>Buy if</dt><dd>You want the easiest finish.</dd><dt>Don't buy if</dt><dd>You hate structured hats.</dd><dt>Fit call</dt><dd>Adjustable structured.</dd><dt>Final call</dt><dd>No overthinking required.</dd></dl>
+        </article>
+      </div>
+      <div class="actions" style="max-width:var(--max);margin:24px auto 0"><a class="btn outline small" href="shop.html">Open Shop Verdicts →</a></div>
+    </section>
+
+    <section class="command-section" data-section="SECTION 04">
+      <div class="command-section__head">
+        <div>
+          <p class="kicker">Gear Files</p>
+          <h2>Product intel</h2>
+        </div>
+      </div>
+      <div class="gear-file-grid">
+        <article class="gear-file"><h3>Iron Discipline Hoodie</h3><dl><dt>Fit</dt><dd>Oversized heavyweight</dd><dt>Use</dt><dd>Pump cover / cold starts / streetwear</dd><dt>Pair with</dt><dd>Snapback + shorts</dd><dt>Final call</dt><dd>The main drop piece.</dd></dl></article>
+        <article class="gear-file"><h3>Relentless Tee</h3><dl><dt>Fit</dt><dd>Athletic-boxy</dd><dt>Use</dt><dd>Training / daily wear / warm sessions</dd><dt>Pair with</dt><dd>Shorts + snapback</dd><dt>Final call</dt><dd>The clean training piece.</dd></dl></article>
+        <article class="gear-file"><h3>Grind Shorts</h3><dl><dt>Fit</dt><dd>Above-knee athletic</dd><dt>Use</dt><dd>Leg day / conditioning / daily training</dd><dt>Pair with</dt><dd>Tee or hoodie</dd><dt>Final call</dt><dd>Built to move.</dd></dl></article>
+        <article class="gear-file"><h3>Standard Snapback</h3><dl><dt>Fit</dt><dd>Adjustable structured</dd><dt>Use</dt><dd>Finish the fit</dd><dt>Pair with</dt><dd>Everything</dd><dt>Final call</dt><dd>No overthinking required.</dd></dl></article>
+      </div>
+    </section>
+
+    <section class="command-section" data-section="SECTION 05">
+      <div class="command-section__head">
+        <div>
+          <p class="kicker">Field tested</p>
+          <h2>Where it works</h2>
+        </div>
+      </div>
+      <div class="field-grid">
+        <article class="field-card"><h3>Cold Starts</h3><p>Layer before the gym warms up.</p></article>
+        <article class="field-card"><h3>Ugly Reps</h3><p>Built for the days comfort is not the standard.</p></article>
+        <article class="field-card"><h3>Wash Days</h3><p>Cold wash. Inside out. Hang dry if you care.</p></article>
+        <article class="field-card"><h3>Street Rotation</h3><p>Gym-first gear that does not look like lazy lounge wear.</p></article>
+      </div>
+    </section>
+
+    <section class="command-section" id="commandVault" data-section="SECTION 06">
+      <div class="vault-card">
+        <p class="kicker">Drop 002</p>
+        <h2>Locked</h2>
+        <p>DROP 002 IS LOCKED. The next run is being built. No previews. No soft launch. Join the crew before it opens.</p>
+        <a class="btn gold" href="index.html#contact">Unlock Early Access →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-brand">
+      <a class="brand" href="index.html"><span class="brand-mark">&#9670;</span><span>BEAST<span>FIT</span></span></a>
+      <p>BUILT DARK. WORN HARD. Discipline-first gear for the grind.</p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="drop-command.html">Command</a>
+      <a href="about.html">About</a>
+      <a href="fit-guide.html">Fit Guide</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a class="footer-email" href="mailto:contact@beastfit.com">contact@beastfit.com</a>
+  </footer>
+
+  <div class="mobile-command-dock" aria-label="Mobile command dock">
+    <div class="mobile-command-dock__status">DROP 001 ACTIVE</div>
+    <nav class="mobile-command-dock__links" aria-label="Drop shortcuts">
+      <a href="shop.html">Shop</a>
+      <a class="active" href="drop-command.html">Command</a>
+      <a href="fit-guide.html">Fit</a>
+      <a href="index.html#contact">Join</a>
+    </nav>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
