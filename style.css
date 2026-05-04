@@ -534,3 +534,326 @@ h1,h2,h3{font-family:Anton,Impact,'Arial Black',sans-serif;font-weight:400;text-
   .drop-alert-track{animation:none;transform:none}
   .drop-alert-track span:nth-child(2){display:none}
 }
+
+body.impact-popup-open{overflow:hidden}
+.impact-popup{
+  position:fixed;
+  inset:0;
+  z-index:300;
+  display:grid;
+  place-items:center;
+  padding:22px;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:opacity .18s ease,visibility .18s ease;
+}
+.impact-popup.is-open{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+}
+.impact-popup__overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.82);
+  backdrop-filter:blur(7px);
+}
+.impact-popup__dialog{
+  position:relative;
+  width:min(940px,100%);
+  max-height:calc(100vh - 44px);
+  display:grid;
+  grid-template-columns:minmax(310px,1.03fr) minmax(300px,.97fr);
+  overflow:hidden;
+  background:linear-gradient(135deg,#060606,#0d0d0d 68%,#030303);
+  border:1px solid rgba(216,170,63,.62);
+  box-shadow:0 34px 110px rgba(0,0,0,.78),0 0 0 1px rgba(255,255,255,.05);
+}
+.impact-popup.is-open .impact-popup__dialog{animation:impactDialogIn .32s ease-out both,impactShake .34s ease-out .64s both}
+.impact-popup__close{
+  position:absolute;
+  top:12px;
+  right:12px;
+  z-index:8;
+  width:44px;
+  height:44px;
+  border:1px solid rgba(255,255,255,.22);
+  background:rgba(0,0,0,.72);
+  color:#fff;
+  font-size:1.7rem;
+  line-height:1;
+  cursor:pointer;
+}
+.impact-popup__close:hover,.impact-popup__close:focus-visible{border-color:var(--gold);color:var(--gold)}
+.impact-popup__visual{
+  position:relative;
+  min-height:430px;
+  overflow:hidden;
+  isolation:isolate;
+  background:#050505;
+}
+/* Future image hook: replace this fallback with assets/popup-impact.jpg or assets/popup-impact.png when a dedicated impact image is uploaded. */
+.impact-popup__image{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.18),rgba(0,0,0,.5)),
+    linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.52)),
+    url('assets/story-lifter.jpg') center 42%/cover no-repeat;
+  filter:contrast(1.08) saturate(.9);
+  transform:scale(1.01);
+}
+.impact-popup__visual:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:2;
+  background:
+    radial-gradient(circle at 66% 48%,rgba(216,170,63,.22) 0 42px,transparent 43px),
+    radial-gradient(circle at 70% 49%,rgba(255,255,255,.14),transparent 24%),
+    linear-gradient(115deg,rgba(216,170,63,.12),transparent 36%,rgba(0,0,0,.36));
+  mix-blend-mode:screen;
+  opacity:.58;
+}
+.impact-popup__visual:after{
+  content:"CONCRETE IMPACT";
+  position:absolute;
+  left:20px;
+  bottom:18px;
+  z-index:3;
+  color:rgba(216,170,63,.2);
+  font-family:Anton,Impact,'Arial Black',sans-serif;
+  font-size:clamp(2rem,4vw,3.8rem);
+  line-height:.9;
+  text-transform:uppercase;
+}
+.impact-popup__flash{
+  position:absolute;
+  inset:0;
+  z-index:5;
+  opacity:0;
+  background:radial-gradient(circle at 64% 47%,rgba(255,237,188,.8),rgba(216,170,63,.34) 14%,transparent 36%);
+}
+.impact-popup.is-open .impact-popup__flash{animation:impactFlash .5s ease-out .5s both}
+.impact-popup__cracks{
+  position:absolute;
+  left:56%;
+  top:43%;
+  z-index:4;
+  width:250px;
+  height:220px;
+  opacity:0;
+  transform:translate(-50%,-50%) scale(.7);
+  background:
+    linear-gradient(32deg,transparent 47%,rgba(255,231,176,.7) 48% 49%,transparent 50%) 34px 20px/170px 92px no-repeat,
+    linear-gradient(104deg,transparent 48%,rgba(216,170,63,.62) 49% 50%,transparent 51%) 82px 44px/126px 150px no-repeat,
+    linear-gradient(150deg,transparent 47%,rgba(255,255,255,.35) 48% 49%,transparent 50%) 8px 104px/178px 76px no-repeat,
+    radial-gradient(circle at 50% 50%,rgba(0,0,0,.46) 0 10px,transparent 11px);
+}
+.impact-popup.is-open .impact-popup__cracks{animation:impactCracks .7s ease-out .52s both}
+.impact-popup__debris span{
+  position:absolute;
+  z-index:6;
+  left:64%;
+  top:48%;
+  width:8px;
+  height:8px;
+  background:linear-gradient(180deg,#e4ba4d,#7d5719);
+  opacity:0;
+  box-shadow:0 0 18px rgba(216,170,63,.26);
+}
+.impact-popup__debris span:nth-child(2){width:6px;height:14px}
+.impact-popup__debris span:nth-child(3){width:12px;height:5px}
+.impact-popup__debris span:nth-child(4){width:7px;height:7px}
+.impact-popup__debris span:nth-child(5){width:10px;height:10px}
+.impact-popup__debris span:nth-child(6){width:5px;height:12px}
+.impact-popup.is-open .impact-popup__debris span:nth-child(1){animation:debrisOne .58s ease-out .58s both}
+.impact-popup.is-open .impact-popup__debris span:nth-child(2){animation:debrisTwo .58s ease-out .57s both}
+.impact-popup.is-open .impact-popup__debris span:nth-child(3){animation:debrisThree .58s ease-out .6s both}
+.impact-popup.is-open .impact-popup__debris span:nth-child(4){animation:debrisFour .58s ease-out .59s both}
+.impact-popup.is-open .impact-popup__debris span:nth-child(5){animation:debrisFive .58s ease-out .6s both}
+.impact-popup.is-open .impact-popup__debris span:nth-child(6){animation:debrisSix .58s ease-out .57s both}
+.impact-popup__dumbbell{
+  position:absolute;
+  left:58%;
+  top:48%;
+  z-index:7;
+  width:188px;
+  height:84px;
+  transform:translate(-180%,-56%) rotate(-14deg) scale(.38);
+  transform-origin:center;
+  opacity:0;
+  filter:drop-shadow(0 24px 30px rgba(0,0,0,.72));
+}
+.impact-popup__dumbbell b,.impact-popup__dumbbell i{position:absolute;display:block}
+.impact-popup__dumbbell b{
+  left:36px;
+  right:36px;
+  top:37px;
+  height:10px;
+  background:linear-gradient(180deg,#c7c7c7,#1f1f1f 48%,#090909);
+  border:1px solid rgba(255,255,255,.24);
+}
+.impact-popup__dumbbell i{
+  top:14px;
+  width:38px;
+  height:56px;
+  border-radius:8px;
+  background:linear-gradient(90deg,#080808,#242424 42%,#040404);
+  border:1px solid rgba(216,170,63,.38);
+  box-shadow:inset 0 0 0 5px rgba(255,255,255,.04);
+}
+.impact-popup__dumbbell i:first-child{left:0}
+.impact-popup__dumbbell i:last-child{right:0}
+.impact-popup.is-open .impact-popup__dumbbell{animation:dumbbellImpact 1.05s cubic-bezier(.16,.9,.24,1) both}
+.impact-popup__content{
+  position:relative;
+  z-index:3;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:clamp(34px,5vw,58px);
+  background:
+    radial-gradient(circle at 100% 0,rgba(216,170,63,.12),transparent 34%),
+    linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,0));
+}
+.impact-popup.is-open .impact-popup__content{animation:impactContentReveal .44s ease-out .72s both}
+.impact-popup__content h2{
+  font-size:clamp(3rem,6vw,5.6rem);
+  line-height:.88;
+  max-width:460px;
+}
+.impact-popup__content strong{
+  display:block;
+  margin-top:16px;
+  color:var(--gold);
+  text-transform:uppercase;
+  font-size:clamp(1rem,2vw,1.28rem);
+  font-weight:950;
+}
+.impact-popup__content p:not(.kicker){
+  color:#e7dfd1;
+  line-height:1.62;
+  margin:16px 0 22px;
+  max-width:470px;
+}
+.impact-popup__form{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:10px;
+  margin-top:2px;
+}
+.impact-popup__form label{
+  position:absolute;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+  clip:rect(0 0 0 0);
+  clip-path:inset(50%);
+  white-space:nowrap;
+}
+.impact-popup__form input{
+  min-width:0;
+  height:54px;
+  border:1px solid rgba(255,255,255,.24);
+  background:#000;
+  color:#fff;
+  padding:0 16px;
+  text-transform:none;
+}
+.impact-popup__form input::placeholder{text-transform:uppercase;color:#8f8678}
+.impact-popup__form button{
+  position:relative;
+  overflow:hidden;
+  height:54px;
+  border:0;
+  background:linear-gradient(180deg,#e3b94d,#c68c22);
+  color:#050505;
+  padding:0 22px;
+  text-transform:uppercase;
+  font-weight:950;
+  cursor:pointer;
+}
+.impact-popup__form button:after{
+  content:"";
+  position:absolute;
+  top:-55%;
+  left:-70%;
+  width:42%;
+  height:210%;
+  transform:skewX(-24deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.42),transparent);
+}
+.impact-popup__form button:hover:after{animation:buttonShine .56s ease forwards}
+.impact-popup__content small{
+  display:block;
+  margin-top:12px;
+  color:#a99f90;
+  text-transform:uppercase;
+  font-size:.72rem;
+  font-weight:800;
+}
+
+@keyframes impactDialogIn{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes impactShake{
+  0%,100%{transform:translate(0,0)}
+  22%{transform:translate(-7px,2px)}
+  48%{transform:translate(6px,-2px)}
+  70%{transform:translate(-3px,1px)}
+}
+@keyframes dumbbellImpact{
+  0%{opacity:0;transform:translate(-180%,-56%) rotate(-14deg) scale(.38)}
+  36%{opacity:1}
+  63%{opacity:1;transform:translate(-36%,-54%) rotate(8deg) scale(1.38)}
+  76%{transform:translate(-48%,-54%) rotate(5deg) scale(.98)}
+  100%{opacity:1;transform:translate(-47%,-54%) rotate(5deg) scale(1)}
+}
+@keyframes impactFlash{
+  0%,100%{opacity:0}
+  34%{opacity:.9}
+}
+@keyframes impactCracks{
+  0%{opacity:0;transform:translate(-50%,-50%) scale(.65)}
+  34%{opacity:1;transform:translate(-50%,-50%) scale(1.03)}
+  100%{opacity:.72;transform:translate(-50%,-50%) scale(1)}
+}
+@keyframes impactContentReveal{from{opacity:.58;filter:blur(2px);transform:translateX(10px)}to{opacity:1;filter:blur(0);transform:translateX(0)}}
+@keyframes debrisOne{0%{opacity:0;transform:translate(0,0) rotate(0)}30%{opacity:1}100%{opacity:0;transform:translate(-110px,-78px) rotate(120deg)}}
+@keyframes debrisTwo{0%{opacity:0;transform:translate(0,0) rotate(0)}30%{opacity:1}100%{opacity:0;transform:translate(78px,-96px) rotate(-96deg)}}
+@keyframes debrisThree{0%{opacity:0;transform:translate(0,0) rotate(0)}30%{opacity:1}100%{opacity:0;transform:translate(128px,22px) rotate(160deg)}}
+@keyframes debrisFour{0%{opacity:0;transform:translate(0,0) rotate(0)}30%{opacity:1}100%{opacity:0;transform:translate(-76px,86px) rotate(-80deg)}}
+@keyframes debrisFive{0%{opacity:0;transform:translate(0,0) rotate(0)}30%{opacity:1}100%{opacity:0;transform:translate(38px,112px) rotate(110deg)}}
+@keyframes debrisSix{0%{opacity:0;transform:translate(0,0) rotate(0)}30%{opacity:1}100%{opacity:0;transform:translate(-138px,18px) rotate(-140deg)}}
+
+@media(max-width:760px){
+  .impact-popup{padding:14px;align-items:center}
+  .impact-popup__dialog{
+    grid-template-columns:1fr;
+    width:100%;
+    max-height:calc(100vh - 28px);
+    overflow:auto;
+  }
+  .impact-popup__visual{min-height:210px}
+  .impact-popup__visual:after{font-size:2.2rem;left:14px;bottom:12px}
+  .impact-popup__dumbbell{width:132px;height:60px}
+  .impact-popup__dumbbell b{left:26px;right:26px;top:27px;height:8px}
+  .impact-popup__dumbbell i{top:9px;width:28px;height:42px}
+  .impact-popup__cracks{width:180px;height:160px}
+  .impact-popup__content{padding:28px 18px 22px}
+  .impact-popup__content h2{font-size:3rem}
+  .impact-popup__form{grid-template-columns:1fr}
+  .impact-popup__form input,.impact-popup__form button{width:100%}
+  .impact-popup__close{top:10px;right:10px;width:46px;height:46px}
+  .impact-popup.is-open .impact-popup__dialog{animation:impactDialogIn .24s ease-out both}
+}
+@media(prefers-reduced-motion:reduce){
+  .impact-popup,.impact-popup__dialog,.impact-popup__content,.impact-popup__flash,.impact-popup__cracks,.impact-popup__debris span,.impact-popup__dumbbell{
+    animation:none!important;
+    transition:none!important;
+  }
+  .impact-popup.is-open .impact-popup__content{filter:none;opacity:1;transform:none}
+  .impact-popup.is-open .impact-popup__flash{opacity:0}
+  .impact-popup.is-open .impact-popup__cracks{opacity:.48;transform:translate(-50%,-50%) scale(1)}
+  .impact-popup.is-open .impact-popup__dumbbell{opacity:1;transform:translate(-47%,-54%) rotate(5deg) scale(1)}
+}
