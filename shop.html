@@ -52,24 +52,68 @@
         <h3>Iron Discipline Hoodie</h3>
         <p>Oversized heavyweight pump cover.</p>
         <div class="product-meta"><strong>$65</strong><!-- Replace with live Shopify hoodies collection URL when ready. --><a href="https://YOUR-SHOPIFY-STORE.myshopify.com/collections/hoodies">Shop Hoodies</a></div>
+        <button class="spotter-toggle" type="button" aria-expanded="false" aria-controls="spotter-hoodie">Spotter Verdict</button>
+        <div class="spotter-verdict" id="spotter-hoodie" hidden>
+          <h4>Spotter Verdict</h4>
+          <dl>
+            <dt>Buy if:</dt><dd>You want a heavy pump cover, cold-start layer, or streetwear fit.</dd>
+            <dt>Skip if:</dt><dd>You want lightweight gear for hot training sessions.</dd>
+            <dt>Fit call:</dt><dd>Oversized. True size for relaxed. Size down for cleaner fit.</dd>
+            <dt>Best pairing:</dt><dd>Standard Snapback + Grind Shorts.</dd>
+            <dt>Final call:</dt><dd>The main drop piece.</dd>
+          </dl>
+        </div>
       </article>
       <article class="product-card" data-category="tee">
         <div class="prod-img tee-prod" role="img" aria-label="Relentless Tee"></div>
         <h3>Relentless Tee</h3>
         <p>Boxy athletic fit. Hard logo hit.</p>
         <div class="product-meta"><strong>$30</strong><!-- Replace with live Shopify tees collection URL when ready. --><a href="https://YOUR-SHOPIFY-STORE.myshopify.com/collections/tees">Shop Tees</a></div>
+        <button class="spotter-toggle" type="button" aria-expanded="false" aria-controls="spotter-tee">Spotter Verdict</button>
+        <div class="spotter-verdict" id="spotter-tee" hidden>
+          <h4>Spotter Verdict</h4>
+          <dl>
+            <dt>Buy if:</dt><dd>You want a cleaner training fit that still looks aggressive.</dd>
+            <dt>Skip if:</dt><dd>You want oversized pump-cover energy.</dd>
+            <dt>Fit call:</dt><dd>Athletic-boxy. True size for clean fit. Size up for more room.</dd>
+            <dt>Best pairing:</dt><dd>Grind Shorts + Standard Snapback.</dd>
+            <dt>Final call:</dt><dd>The everyday training piece.</dd>
+          </dl>
+        </div>
       </article>
       <article class="product-card" data-category="shorts">
         <div class="prod-img shorts-prod" role="img" aria-label="Grind Shorts"></div>
         <h3>Grind Shorts</h3>
         <p>Above-knee training cut.</p>
         <div class="product-meta"><strong>$42</strong><!-- Replace with live Shopify shorts collection URL when ready. --><a href="https://YOUR-SHOPIFY-STORE.myshopify.com/collections/shorts">Shop Shorts</a></div>
+        <button class="spotter-toggle" type="button" aria-expanded="false" aria-controls="spotter-shorts">Spotter Verdict</button>
+        <div class="spotter-verdict" id="spotter-shorts" hidden>
+          <h4>Spotter Verdict</h4>
+          <dl>
+            <dt>Buy if:</dt><dd>You want above-knee training shorts built for movement.</dd>
+            <dt>Skip if:</dt><dd>You want long, baggy lounge shorts.</dd>
+            <dt>Fit call:</dt><dd>True size for training. Size up if you want more thigh room.</dd>
+            <dt>Best pairing:</dt><dd>Relentless Tee or Iron Discipline Hoodie.</dd>
+            <dt>Final call:</dt><dd>Leg day ready.</dd>
+          </dl>
+        </div>
       </article>
       <article class="product-card" data-category="hat">
         <div class="prod-img hat-prod" role="img" aria-label="Standard Snapback"></div>
         <h3>Standard Snapback</h3>
         <p>Structured black cap. Clean finish.</p>
         <div class="product-meta"><strong>$35</strong><!-- Replace with live Shopify hats collection URL when ready. --><a href="https://YOUR-SHOPIFY-STORE.myshopify.com/collections/hats">Shop Hats</a></div>
+        <button class="spotter-toggle" type="button" aria-expanded="false" aria-controls="spotter-hat">Spotter Verdict</button>
+        <div class="spotter-verdict" id="spotter-hat" hidden>
+          <h4>Spotter Verdict</h4>
+          <dl>
+            <dt>Buy if:</dt><dd>You want the easiest way to finish the fit.</dd>
+            <dt>Skip if:</dt><dd>You hate structured hats.</dd>
+            <dt>Fit call:</dt><dd>Adjustable snapback/trucker fit.</dd>
+            <dt>Best pairing:</dt><dd>Everything in Drop 001.</dd>
+            <dt>Final call:</dt><dd>No overthinking required.</dd>
+          </dl>
+        </div>
       </article>
     </section>
 
@@ -95,6 +139,16 @@
       </div>
     </section>
 
+    <section class="drop-locked" aria-labelledby="shopDropLockedTitle">
+      <div class="drop-locked-card">
+        <span class="locked-stamp">Classified</span>
+        <p class="kicker">Drop 002</p>
+        <h2 id="shopDropLockedTitle">Locked</h2>
+        <p>The next run is being built. No previews. No soft launch. Join the crew for early access.</p>
+        <a class="btn gold small" href="index.html#contact">Unlock Early Access</a>
+      </div>
+    </section>
+
     <!-- Future Shopify embed note: paste live Shopify Buy Button components here only if this public layout is changed to support embedded checkout. -->
   </main>
 
@@ -112,6 +166,12 @@
     </nav>
     <a class="footer-email" href="mailto:contact@beastfit.com">contact@beastfit.com</a>
   </footer>
+
+  <div class="mobile-drop-bar" id="mobileDropBar" data-mobile-drop-page="shop" aria-hidden="true">
+    <button type="button" aria-label="Close drop access bar" data-mobile-drop-close>&times;</button>
+    <span>DROP 001 ACTIVE</span>
+    <a href="shop.html">Shop The Drop &rarr;</a>
+  </div>
 
   <script src="script.js"></script>
 </body>
