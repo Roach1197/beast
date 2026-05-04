@@ -6,58 +6,6 @@
   <title>BeastFit Fit Guide | Hoodies, Tees, Shorts, Hats</title>
   <meta name="description" content="Find your BeastFit size for oversized hoodies, athletic tees, above-knee shorts, and adjustable hats." />
   <link rel="stylesheet" href="style.css" />
-  <style>
-    /* Build Your Fit polish overrides: keep this scoped until real product cutouts are ready. */
-    .fit-builder{grid-template-columns:minmax(320px,40%) 1fr}
-    .fit-builder-panel{box-shadow:0 28px 70px rgba(0,0,0,.36)}
-    .fit-builder-controls{background:radial-gradient(circle at 0 0,rgba(216,170,63,.11),transparent 28%),linear-gradient(180deg,#0b0b0b,#070707)}
-    .fit-control-group{padding-top:18px;border-top:1px solid rgba(255,255,255,.09)}
-    .fit-option{min-height:48px;background:linear-gradient(180deg,#131313,#0b0b0b);border-color:rgba(255,255,255,.2);box-shadow:inset 0 0 0 1px rgba(255,255,255,.025)}
-    .fit-option:hover,.fit-option:focus-visible{border-color:var(--gold);color:var(--gold);box-shadow:inset 0 0 0 1px rgba(216,170,63,.16),0 10px 24px rgba(0,0,0,.2)}
-    .fit-option.active{background:linear-gradient(180deg,#e7bd52,#c88f22);box-shadow:0 12px 30px rgba(216,170,63,.2),inset 0 0 0 1px rgba(255,255,255,.28)}
-    .fit-builder-actions .btn[disabled]{opacity:.54;cursor:not-allowed;transform:none;box-shadow:none}
-    .fit-preview-panel{grid-template-rows:auto minmax(440px,1fr) auto;background:radial-gradient(circle at 73% 18%,rgba(216,170,63,.13) 0 92px,transparent 93px),radial-gradient(circle at 50% 68%,rgba(255,255,255,.055),transparent 36%),linear-gradient(160deg,#040404,#111 62%,#050505)}
-    .fit-preview-panel:before{border-color:rgba(216,170,63,.24);box-shadow:inset 0 0 38px rgba(216,170,63,.035)}
-    .fit-mode-badges span{color:#918879;background:rgba(0,0,0,.42);border-color:rgba(255,255,255,.14)}
-    .fit-builder[data-mode~="training"] [data-fit-mode="training"],.fit-builder[data-mode~="streetwear"] [data-fit-mode="streetwear"],.fit-builder[data-mode~="pump"] [data-fit-mode="pump"]{background:linear-gradient(180deg,#e3b94e,#c99024);box-shadow:0 8px 20px rgba(216,170,63,.16)}
-    .fit-stage{min-height:440px;background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.012))}
-    .fit-stage:before{width:255px;height:34px;background:radial-gradient(ellipse,rgba(216,170,63,.3),rgba(0,0,0,0) 70%);filter:blur(1px)}
-    .mannequin{width:292px;height:410px;filter:drop-shadow(0 26px 28px rgba(0,0,0,.55))}
-    .mannequin:before{content:"";position:absolute;left:36px;right:36px;top:86px;height:230px;border-radius:55px 55px 34px 34px;background:radial-gradient(circle at 50% 8%,rgba(216,170,63,.12),transparent 24%),linear-gradient(90deg,transparent 0 8%,rgba(255,255,255,.035) 35%,transparent 60%);opacity:.62}
-    .mannequin-head{left:112px;top:18px;width:68px;height:74px;background:linear-gradient(180deg,#222,#0d0d0d);box-shadow:inset 0 -20px 24px rgba(0,0,0,.6),0 12px 20px rgba(0,0,0,.38);z-index:1}
-    .mannequin-neck{left:130px;top:88px;width:32px;height:32px;background:#111;z-index:1}
-    .mannequin-torso{left:76px;top:112px;width:140px;height:160px;border-radius:45px 45px 24px 24px;background:linear-gradient(180deg,#191919,#080808);box-shadow:inset 0 18px 34px rgba(255,255,255,.035),inset 0 -26px 34px rgba(0,0,0,.46);z-index:1}
-    .mannequin-arm{top:126px;width:34px;height:162px;background:linear-gradient(180deg,#141414,#060606);z-index:1}
-    .mannequin-arm.left{left:45px;transform:rotate(8deg)}
-    .mannequin-arm.right{right:45px;transform:rotate(-8deg)}
-    .mannequin-leg{top:263px;width:48px;height:118px;background:linear-gradient(180deg,#131313,#060606);z-index:1}
-    .mannequin-leg.left{left:92px}.mannequin-leg.right{right:92px}
-    .fit-hat{left:96px;top:6px;width:98px;height:48px}
-    .fit-hat:before{left:10px;top:11px;width:62px;height:31px;border-radius:25px 25px 8px 8px;background:linear-gradient(180deg,#171717,#020202);box-shadow:inset 0 7px 12px rgba(255,255,255,.035),0 8px 16px rgba(0,0,0,.34)}
-    .fit-hat:after{right:0;top:29px;width:43px;height:10px;background:linear-gradient(90deg,var(--gold),#9d7019)}
-    .fit-top{left:49px;top:99px;width:194px;height:190px}
-    .fit-top:before{inset:24px 20px 0;background:linear-gradient(180deg,#151515,#040404);box-shadow:inset 0 0 0 1px rgba(255,255,255,.05),0 16px 20px rgba(0,0,0,.28)}
-    .fit-top:after{top:82px;text-shadow:0 0 12px rgba(216,170,63,.18)}
-    .fit-bottom{left:81px;top:251px;width:130px;height:92px}
-    .fit-bottom:before{height:76px;border-color:rgba(216,170,63,.5);box-shadow:inset 0 12px 16px rgba(255,255,255,.035)}
-    .fit-bottom:after{content:"";position:absolute;left:50%;top:12px;width:1px;height:54px;background:rgba(216,170,63,.38);box-shadow:-33px 10px 0 -7px var(--gold),33px 10px 0 -7px var(--gold)}
-    .fit-builder[data-top="hoodie"] .fit-top{transform:scale(1.09) translateY(-5px);background:radial-gradient(circle at 50% 18%,rgba(216,170,63,.18) 0 17px,transparent 18px)}
-    .fit-builder[data-top="hoodie"] .fit-top:before{inset:2px 0 0;border-radius:52px 52px 22px 22px;background:linear-gradient(180deg,#1a1a1a,#050505)}
-    .fit-builder[data-top="hoodie"] .fit-top:after{top:68px}
-    .fit-builder[data-top="tee"] .fit-top{transform:scale(.89) translateY(6px)}
-    .fit-builder[data-top="tee"] .fit-top:before{inset:31px 31px 16px;border-radius:20px 20px 12px 12px;background:linear-gradient(180deg,#141414,#050505)}
-    .current-fit-summary{gap:12px;background:rgba(0,0,0,.58);box-shadow:inset 0 0 0 1px rgba(216,170,63,.06)}
-    .current-fit-summary ul{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-    .current-fit-summary li{display:grid;gap:4px;background:linear-gradient(180deg,rgba(216,170,63,.1),rgba(0,0,0,.28));padding:10px;min-width:0}
-    .current-fit-summary li span{color:var(--gold);font-size:.62rem}
-    .current-fit-summary li.empty{border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.035);color:#8e8578}
-    @media(max-width:760px){
-      .fit-preview-panel{grid-template-rows:auto minmax(360px,auto) auto}
-      .fit-stage{min-height:360px}
-      .mannequin{transform:scale(.84);transform-origin:center}
-      .current-fit-summary ul{grid-template-columns:1fr}
-    }
-  </style>
 </head>
 <body>
   <header class="topbar solid" id="topbar">
@@ -144,82 +92,55 @@
       </div>
     </section>
 
-    <section class="fit-builder" id="build-your-fit" aria-labelledby="fitBuilderTitle">
-      <div class="fit-builder-panel fit-builder-controls">
-        <p class="kicker">Build Your Fit</p>
-        <h2 id="fitBuilderTitle">Stack the drop.</h2>
-        <p>Pick your headwear, top, and bottom to see what combo hits before you shop.</p>
+    <section class="uniform-builder" id="build-uniform" data-uniform-mode="training" aria-labelledby="uniformBuilderTitle">
+      <div class="uniform-panel uniform-controls">
+        <p class="kicker">Build Your Uniform</p>
+        <h2 id="uniformBuilderTitle">Build Your Uniform</h2>
+        <p>Choose the mode. Lock the look. No mannequin nonsense - just the gear that fits the work.</p>
 
-        <div class="fit-control-group" aria-labelledby="fitHatLabel">
-          <h3 id="fitHatLabel">Hat</h3>
-          <div class="fit-options" role="group" aria-label="Choose a hat">
-            <button class="fit-option active" type="button" data-fit-category="hat" data-fit-value="none" aria-pressed="true">None</button>
-            <button class="fit-option" type="button" data-fit-category="hat" data-fit-value="snapback" aria-pressed="false">Standard Snapback</button>
-          </div>
-        </div>
-
-        <div class="fit-control-group" aria-labelledby="fitTopLabel">
-          <h3 id="fitTopLabel">Top</h3>
-          <div class="fit-options" role="group" aria-label="Choose a top">
-            <button class="fit-option active" type="button" data-fit-category="top" data-fit-value="none" aria-pressed="true">None</button>
-            <button class="fit-option" type="button" data-fit-category="top" data-fit-value="hoodie" aria-pressed="false">Iron Discipline Hoodie</button>
-            <button class="fit-option" type="button" data-fit-category="top" data-fit-value="tee" aria-pressed="false">Relentless Tee</button>
-          </div>
-        </div>
-
-        <div class="fit-control-group" aria-labelledby="fitBottomLabel">
-          <h3 id="fitBottomLabel">Bottom</h3>
-          <div class="fit-options" role="group" aria-label="Choose a bottom">
-            <button class="fit-option active" type="button" data-fit-category="bottom" data-fit-value="none" aria-pressed="true">None</button>
-            <button class="fit-option" type="button" data-fit-category="bottom" data-fit-value="shorts" aria-pressed="false">Grind Shorts</button>
-          </div>
-        </div>
-
-        <div class="fit-builder-actions">
-          <button class="btn outline small" type="button" id="fitReset">Reset Fit</button>
-          <button class="btn gold small" type="button" id="fitBestCombo">Best Combo</button>
-          <a class="btn outline small" href="shop.html">Shop This Fit</a>
+        <div class="uniform-mode-list" role="group" aria-label="Choose a BeastFit loadout mode">
+          <button class="uniform-mode active" type="button" data-uniform-mode="training" aria-pressed="true">Training</button>
+          <button class="uniform-mode" type="button" data-uniform-mode="pump" aria-pressed="false">Pump Cover</button>
+          <button class="uniform-mode" type="button" data-uniform-mode="streetwear" aria-pressed="false">Streetwear</button>
+          <button class="uniform-mode" type="button" data-uniform-mode="blackout" aria-pressed="false">All Black</button>
         </div>
       </div>
 
-      <div class="fit-builder-panel fit-preview-panel">
-        <div class="fit-preview-header">
-          <div>
-            <p class="kicker">Current Fit</p>
-            <h3 id="fitModeTitle">Bare Bones</h3>
-          </div>
-          <div class="fit-mode-badges" aria-label="Fit mode">
-            <span data-fit-mode="training">Training</span>
-            <span data-fit-mode="streetwear">Streetwear</span>
-            <span data-fit-mode="pump">Pump Cover</span>
-          </div>
+      <div class="uniform-panel uniform-board">
+        <div class="uniform-hero-card">
+          <div class="uniform-hero-image" id="uniformHeroImage" role="img" aria-label="Training BeastFit loadout preview"></div>
+          <span class="uniform-stamp">Locked</span>
         </div>
 
-        <div class="fit-stage" aria-label="Outfit preview">
-          <!-- Future transparent asset slot: assets/fit-builder/mannequin-base.png -->
-          <div class="mannequin" aria-hidden="true">
-            <span class="mannequin-head"></span>
-            <span class="mannequin-neck"></span>
-            <span class="mannequin-torso"></span>
-            <span class="mannequin-arm left"></span>
-            <span class="mannequin-arm right"></span>
-            <span class="mannequin-leg left"></span>
-            <span class="mannequin-leg right"></span>
+        <div class="uniform-loadout">
+          <p class="kicker">Current Loadout</p>
+          <h3 id="uniformModeTitle">Training</h3>
+          <p id="uniformModeCopy">Built for hot sessions, leg days, and cleaner athletic fit.</p>
 
-            <!-- Future transparent asset slot: assets/fit-builder/hat-standard.png -->
-            <span class="fit-layer fit-hat" data-layer="hat"></span>
-            <!-- Future transparent asset slots: assets/fit-builder/top-hoodie-iron.png and assets/fit-builder/top-tee-relentless.png -->
-            <span class="fit-layer fit-top" data-layer="top"></span>
-            <!-- Future transparent asset slot: assets/fit-builder/bottom-shorts-grind.png -->
-            <span class="fit-layer fit-bottom" data-layer="bottom"></span>
+          <div class="uniform-gear-grid" aria-live="polite">
+            <article class="uniform-gear-card" data-uniform-slot="headwear">
+              <div class="uniform-thumb" id="uniformHeadwearImage" role="img" aria-label="Selected headwear"></div>
+              <span>Headwear</span>
+              <strong id="uniformHeadwear">Standard Snapback</strong>
+            </article>
+            <article class="uniform-gear-card" data-uniform-slot="top">
+              <div class="uniform-thumb" id="uniformTopImage" role="img" aria-label="Selected top"></div>
+              <span>Top</span>
+              <strong id="uniformTop">Relentless Tee</strong>
+            </article>
+            <article class="uniform-gear-card" data-uniform-slot="bottom">
+              <div class="uniform-thumb" id="uniformBottomImage" role="img" aria-label="Selected bottom"></div>
+              <span>Bottom</span>
+              <strong id="uniformBottom">Grind Shorts</strong>
+            </article>
           </div>
-        </div>
 
-        <div class="current-fit-summary" aria-live="polite">
-          <strong>Current Fit:</strong>
-          <ul id="currentFitList">
-            <li>No gear selected</li>
-          </ul>
+          <div class="uniform-why">
+            <strong>Why this works</strong>
+            <p id="uniformWhy">Light up top, mobile through the legs, finished with a structured cap. It reads athletic without looking plain.</p>
+          </div>
+
+          <a class="btn gold small" href="shop.html">Shop This Loadout &rarr;</a>
         </div>
       </div>
     </section>
