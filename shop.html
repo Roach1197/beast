@@ -40,6 +40,76 @@
     .mobile-command-dock{display:none}
     @media(max-width:760px){.mobile-command-dock{position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:185;display:grid;gap:7px;padding:9px;background:rgba(3,3,3,.95);border:1px solid rgba(216,170,63,.58);box-shadow:0 18px 48px rgba(0,0,0,.58)}.mobile-command-dock__status{color:var(--gold);text-align:center;text-transform:uppercase;font-size:.68rem;font-weight:950;letter-spacing:.08em}.mobile-command-dock__links{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.mobile-command-dock a{min-height:38px;display:grid;place-items:center;background:#0b0b0b;border:1px solid rgba(255,255,255,.14);color:#fff;text-transform:uppercase;font-size:.66rem;font-weight:950}.mobile-command-dock a.active,.mobile-command-dock a:active{background:var(--gold);color:#050505;border-color:var(--gold)}body.impact-popup-open .mobile-command-dock{opacity:0;pointer-events:none;transform:translateY(120%)}.site-footer{padding-bottom:118px}}
     @media(prefers-reduced-motion:reduce){.mobile-command-dock{transition:none!important}}
+    .prod-img:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+    .inspect-tags{position:absolute;z-index:4;left:14px;right:14px;bottom:14px;display:flex;flex-wrap:wrap;gap:7px;opacity:0;transform:translateY(8px);transition:opacity .18s ease,transform .18s ease}
+    .inspect-tags span,.gear-sheet__scan span{background:rgba(0,0,0,.74);border:1px solid rgba(216,170,63,.48);color:var(--gold);padding:6px 8px;text-transform:uppercase;font-size:.62rem;font-weight:950;letter-spacing:.04em}
+    .product-card:hover .inspect-tags,.product-card:focus-within .inspect-tags,.product-card:active .inspect-tags{opacity:1;transform:translateY(0)}
+    .product-action-stack{display:grid;gap:9px;margin-top:14px}
+    .gear-sheet-button,.gear-sheet-link{min-height:42px;display:inline-flex;align-items:center;justify-content:center;padding:0 14px;border:1px solid rgba(216,170,63,.44);background:linear-gradient(180deg,#101010,#070707);color:var(--gold);text-align:center;text-decoration:none;text-transform:uppercase;font-weight:950;font-size:.72rem;cursor:pointer;transition:background .18s ease,color .18s ease,border-color .18s ease,transform .18s ease}
+    .gear-sheet-button:hover,.gear-sheet-button:focus-visible,.gear-sheet-link:hover,.gear-sheet-link:focus-visible{background:var(--gold);border-color:var(--gold);color:#050505}
+    .gear-sheet-link{width:100%;margin-top:14px}
+    .loadout-rail-section,.comparison-section{max-width:var(--max);margin:0 auto;padding:26px clamp(20px,4vw,32px)}
+    .loadout-rail{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;overflow:hidden}
+    .loadout-tile{display:grid;grid-template-rows:210px 1fr;min-width:0;background:#090909;border:1px solid rgba(255,255,255,.14);box-shadow:0 22px 60px rgba(0,0,0,.22)}
+    .loadout-tile__visual{position:relative;background:#111 center 42%/cover no-repeat;border-bottom:1px solid rgba(216,170,63,.24);overflow:hidden}
+    .loadout-tile__visual:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.06),rgba(0,0,0,.64)),radial-gradient(circle at 80% 18%,rgba(216,170,63,.16),transparent 34%)}
+    .loadout-pump{background-image:url('assets/hoodies.jpg')}
+    .loadout-training{background-image:url('assets/tees.jpg')}
+    .loadout-street{background-image:url('assets/product-rack.jpg')}
+    .loadout-tile__body{display:grid;gap:12px;padding:20px}
+    .loadout-tile__body h3{font-size:1.9rem;line-height:1}
+    .loadout-tile__body p{color:var(--muted);line-height:1.55;margin:0}
+    .loadout-chips{display:flex;flex-wrap:wrap;gap:8px}
+    .loadout-chips span{border:1px solid rgba(216,170,63,.34);background:rgba(216,170,63,.08);color:#eee;padding:7px 9px;text-transform:uppercase;font-size:.66rem;font-weight:950}
+    .loadout-actions{display:grid;gap:9px;margin-top:auto}
+    .loadout-actions .gear-sheet-link{margin-top:0}
+    .comparison-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+    .comparison-card{display:grid;gap:16px;background:linear-gradient(180deg,#0b0b0b,#050505);border:1px solid rgba(255,255,255,.14);padding:26px}
+    .comparison-card div{display:grid;gap:6px;border-top:1px solid rgba(255,255,255,.1);padding-top:14px}
+    .comparison-card strong{color:var(--gold);text-transform:uppercase;font-size:.78rem}
+    .comparison-card span{display:block;border:1px solid rgba(216,170,63,.34);background:rgba(216,170,63,.08);color:#f4efe6;padding:12px;text-transform:uppercase;font-size:.78rem;font-weight:950;line-height:1.45}
+    body.gear-sheet-open{overflow:hidden}
+    body.gear-sheet-open .mobile-command-dock{opacity:0;pointer-events:none;transform:translateY(120%)}
+    .gear-sheet{position:fixed;inset:0;z-index:260;display:grid;place-items:center;padding:20px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s ease,visibility .2s ease}
+    .gear-sheet.is-open{opacity:1;visibility:visible;pointer-events:auto}
+    .gear-sheet__backdrop{position:absolute;inset:0;border:0;background:rgba(0,0,0,.78);cursor:pointer}
+    .gear-sheet__panel{position:relative;width:min(1080px,100%);max-height:90vh;display:grid;grid-template-rows:auto minmax(0,1fr) auto;background:linear-gradient(135deg,#050505,#101010 62%,#050505);border:1px solid rgba(216,170,63,.48);box-shadow:0 34px 110px rgba(0,0,0,.68);overflow:hidden;transform:translateY(14px) scale(.98);transition:transform .22s ease}
+    .gear-sheet.is-open .gear-sheet__panel{transform:translateY(0) scale(1)}
+    .gear-sheet__panel:focus{outline:none}
+    .gear-sheet__header{display:flex;justify-content:space-between;gap:18px;align-items:center;padding:18px 20px;border-bottom:1px solid rgba(216,170,63,.28);background:rgba(0,0,0,.44)}
+    .gear-sheet__header .kicker{margin-bottom:4px}
+    .gear-sheet__header strong{color:#eee;text-transform:uppercase;font-size:.76rem;letter-spacing:.06em}
+    .gear-sheet__close{width:46px;height:46px;border:1px solid rgba(255,255,255,.18);background:#080808;color:#fff;font-size:1.55rem;cursor:pointer}
+    .gear-sheet__close:hover,.gear-sheet__close:focus-visible{border-color:var(--gold);color:var(--gold)}
+    .gear-sheet__body{min-height:0;display:grid;grid-template-columns:minmax(280px,38%) minmax(0,1fr);overflow:hidden}
+    .gear-sheet__media{position:relative;min-height:560px;border-right:1px solid rgba(216,170,63,.24);background:#050505;overflow:hidden}
+    .gear-sheet__image{position:absolute;inset:0;background:center 40%/cover no-repeat;filter:contrast(1.04) saturate(.95)}
+    .gear-sheet__media:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.58)),radial-gradient(circle at 78% 16%,rgba(216,170,63,.16),transparent 30%)}
+    .gear-sheet__scan{position:absolute;z-index:3;left:16px;right:16px;bottom:16px;display:flex;flex-wrap:wrap;gap:8px}
+    .gear-sheet__content{min-width:0;overflow:auto;padding:26px;display:grid;align-content:start;gap:18px}
+    .gear-sheet__title-row{display:flex;justify-content:space-between;gap:18px;align-items:flex-start}
+    .gear-sheet__title-row h2{font-size:clamp(2.6rem,5vw,5rem);line-height:.9}
+    .gear-sheet__title-row p{color:var(--muted);line-height:1.5;margin:12px 0 0}
+    .gear-sheet__title-row > strong{color:var(--gold);font-size:1.35rem;white-space:nowrap}
+    .gear-tabs{display:flex;gap:8px;overflow:auto;padding-bottom:4px}
+    .gear-tab{min-height:42px;border:1px solid rgba(255,255,255,.15);background:#0c0c0c;color:#eee;padding:0 13px;text-transform:uppercase;font-weight:950;font-size:.7rem;cursor:pointer;white-space:nowrap}
+    .gear-tab.active,.gear-tab:hover,.gear-tab:focus-visible{background:var(--gold);border-color:var(--gold);color:#050505}
+    .gear-panels{border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.28)}
+    .gear-panel{display:none;padding:22px}
+    .gear-panel.active{display:block}
+    .gear-facts{display:grid;gap:13px;margin:0}
+    .gear-facts dt{color:var(--gold);text-transform:uppercase;font-weight:950;font-size:.7rem}
+    .gear-facts dd{margin:-8px 0 0;color:#eee;line-height:1.55}
+    .gear-pairing-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:18px}
+    .gear-pairing-card{display:grid;gap:9px;padding:10px;background:#090909;border:1px solid rgba(255,255,255,.12)}
+    .gear-pairing-card__image{display:block;min-height:118px;background:#111 center 42%/cover no-repeat}
+    .gear-pairing-card strong{color:#fff;text-transform:uppercase;font-size:.75rem;line-height:1.25}
+    .gear-pairing-card small{color:var(--muted);line-height:1.35}
+    .gear-sheet__footer{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 20px;border-top:1px solid rgba(216,170,63,.28);background:#050505}
+    .gear-sheet__footer span{color:#eee;text-transform:uppercase;font-weight:950;font-size:.78rem}
+    @media(max-width:1120px){.loadout-rail{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:760px){.spotter-toggle,.gear-sheet-button,.gear-sheet-link{min-height:48px;width:100%}.loadout-rail-section,.comparison-section{padding:28px 18px}.loadout-rail{display:flex;gap:14px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;padding-bottom:8px}.loadout-tile{flex:0 0 min(86vw,360px);scroll-snap-align:start;grid-template-rows:180px 1fr}.comparison-grid{grid-template-columns:1fr}.comparison-card{padding:22px}.gear-sheet{align-items:end;padding:0}.gear-sheet__panel{width:100%;max-height:92vh;border-radius:18px 18px 0 0;grid-template-rows:auto minmax(0,1fr) auto;transform:translateY(110%) scale(1);border-bottom:0}.gear-sheet.is-open .gear-sheet__panel{transform:translateY(0) scale(1)}.gear-sheet__header{position:sticky;top:0;z-index:5;padding:14px 16px}.gear-sheet__body{display:block;overflow:auto}.gear-sheet__media{min-height:230px;border-right:0;border-bottom:1px solid rgba(216,170,63,.24)}.gear-sheet__content{overflow:visible;padding:20px 16px 18px}.gear-sheet__title-row{display:grid}.gear-sheet__title-row h2{font-size:clamp(2.45rem,12vw,3.7rem)}.gear-tabs{margin-inline:-16px;padding:0 16px 6px}.gear-panel{padding:18px}.gear-pairing-grid{grid-template-columns:1fr}.gear-pairing-card{grid-template-columns:104px 1fr;align-items:center}.gear-pairing-card__image{min-height:96px}.gear-sheet__footer{position:sticky;bottom:0;z-index:6;display:grid;padding:12px 16px calc(12px + env(safe-area-inset-bottom))}.gear-sheet__footer .btn{width:100%}}
+    @media(prefers-reduced-motion:reduce){.inspect-tags,.gear-sheet,.gear-sheet__panel,.gear-sheet-button,.gear-sheet-link{transition:none!important}}
   </style>
 </head>
 <body>
@@ -82,15 +152,25 @@
       <button class="filter-btn" type="button" data-filter="hat" aria-pressed="false">Hats</button>
     </section>
 
-    <section class="shop-grid">
-      <article class="product-card" data-category="hoodie">
+    <section class="shop-grid" id="gear-intelligence">
+      <article class="product-card" id="hoodies" data-category="hoodie" data-product-slug="hoodie">
         <span class="drop-corner-tag">Drop 001</span>
-        <div class="prod-img hoodie-prod" role="img" aria-label="Iron Discipline Hoodie"></div>
+        <div class="prod-img hoodie-prod" role="img" aria-label="Iron Discipline Hoodie gear inspection" tabindex="0">
+          <div class="inspect-tags" aria-hidden="true">
+            <span>Fit</span>
+            <span>Drop 001</span>
+            <span>Heavyweight</span>
+            <span>Pump Cover</span>
+          </div>
+        </div>
         <div class="product-status-row"><span>Drop 001</span><span>Active</span></div>
         <h3>Iron Discipline Hoodie</h3>
         <p>Oversized heavyweight pump cover.</p>
-        <div class="product-meta"><strong>$65</strong><!-- Replace with live Shopify hoodies collection URL when ready. --><a href="https://YOUR-SHOPIFY-STORE.myshopify.com/collections/hoodies">Shop Hoodies</a></div>
-        <button class="spotter-toggle" type="button" aria-expanded="false" aria-controls="spotter-hoodie">Spotter Verdict</button>
+        <div class="product-meta"><strong>$65</strong><!-- Future Shopify product URL hook: replace this anchor with the live hoodie URL. --><a href="#hoodies">Shop Hoodies</a></div>
+        <div class="product-action-stack">
+          <button class="spotter-toggle" type="button" aria-expanded="false" aria-controls="spotter-hoodie">Spotter Verdict</button>
+          <button class="gear-sheet-button" type="button" data-gear-open="hoodie">Open Gear Sheet</button>
+        </div>
         <div class="spotter-verdict" id="spotter-hoodie" hidden>
           <h4>Spotter Verdict</h4>
           <dl>
@@ -100,16 +180,27 @@
             <dt>Best pairing:</dt><dd>Standard Snapback + Grind Shorts.</dd>
             <dt>Final call:</dt><dd>The main drop piece.</dd>
           </dl>
+          <button class="gear-sheet-link" type="button" data-gear-open="hoodie">Open Full Gear Sheet →</button>
         </div>
       </article>
-      <article class="product-card" data-category="tee">
+      <article class="product-card" id="tees" data-category="tee" data-product-slug="tee">
         <span class="drop-corner-tag">Drop 001</span>
-        <div class="prod-img tee-prod" role="img" aria-label="Relentless Tee"></div>
+        <div class="prod-img tee-prod" role="img" aria-label="Relentless Tee gear inspection" tabindex="0">
+          <div class="inspect-tags" aria-hidden="true">
+            <span>Fit</span>
+            <span>Drop 001</span>
+            <span>Training</span>
+            <span>Athletic</span>
+          </div>
+        </div>
         <div class="product-status-row"><span>Drop 001</span><span>Active</span></div>
         <h3>Relentless Tee</h3>
         <p>Boxy athletic fit. Hard logo hit.</p>
-        <div class="product-meta"><strong>$30</strong><!-- Replace with live Shopify tees collection URL when ready. --><a href="https://YOUR-SHOPIFY-STORE.myshopify.com/collections/tees">Shop Tees</a></div>
-        <button class="spotter-toggle" type="button" aria-expanded="false" aria-controls="spotter-tee">Spotter Verdict</button>
+        <div class="product-meta"><strong>$30</strong><!-- Future Shopify product URL hook: replace this anchor with the live tee URL. --><a href="#tees">Shop Tees</a></div>
+        <div class="product-action-stack">
+          <button class="spotter-toggle" type="button" aria-expanded="false" aria-controls="spotter-tee">Spotter Verdict</button>
+          <button class="gear-sheet-button" type="button" data-gear-open="tee">Open Gear Sheet</button>
+        </div>
         <div class="spotter-verdict" id="spotter-tee" hidden>
           <h4>Spotter Verdict</h4>
           <dl>
@@ -119,16 +210,27 @@
             <dt>Best pairing:</dt><dd>Grind Shorts + Standard Snapback.</dd>
             <dt>Final call:</dt><dd>The everyday training piece.</dd>
           </dl>
+          <button class="gear-sheet-link" type="button" data-gear-open="tee">Open Full Gear Sheet →</button>
         </div>
       </article>
-      <article class="product-card" data-category="shorts">
+      <article class="product-card" id="shorts" data-category="shorts" data-product-slug="shorts">
         <span class="drop-corner-tag">Drop 001</span>
-        <div class="prod-img shorts-prod" role="img" aria-label="Grind Shorts"></div>
+        <div class="prod-img shorts-prod" role="img" aria-label="Grind Shorts gear inspection" tabindex="0">
+          <div class="inspect-tags" aria-hidden="true">
+            <span>Fit</span>
+            <span>Drop 001</span>
+            <span>Training</span>
+            <span>Movement</span>
+          </div>
+        </div>
         <div class="product-status-row"><span>Drop 001</span><span>Active</span></div>
         <h3>Grind Shorts</h3>
         <p>Above-knee training cut.</p>
-        <div class="product-meta"><strong>$42</strong><!-- Replace with live Shopify shorts collection URL when ready. --><a href="https://YOUR-SHOPIFY-STORE.myshopify.com/collections/shorts">Shop Shorts</a></div>
-        <button class="spotter-toggle" type="button" aria-expanded="false" aria-controls="spotter-shorts">Spotter Verdict</button>
+        <div class="product-meta"><strong>$42</strong><!-- Future Shopify product URL hook: replace this anchor with the live shorts URL. --><a href="#shorts">Shop Shorts</a></div>
+        <div class="product-action-stack">
+          <button class="spotter-toggle" type="button" aria-expanded="false" aria-controls="spotter-shorts">Spotter Verdict</button>
+          <button class="gear-sheet-button" type="button" data-gear-open="shorts">Open Gear Sheet</button>
+        </div>
         <div class="spotter-verdict" id="spotter-shorts" hidden>
           <h4>Spotter Verdict</h4>
           <dl>
@@ -138,16 +240,27 @@
             <dt>Best pairing:</dt><dd>Relentless Tee or Iron Discipline Hoodie.</dd>
             <dt>Final call:</dt><dd>Leg day ready.</dd>
           </dl>
+          <button class="gear-sheet-link" type="button" data-gear-open="shorts">Open Full Gear Sheet →</button>
         </div>
       </article>
-      <article class="product-card" data-category="hat">
+      <article class="product-card" id="hats" data-category="hat" data-product-slug="snapback">
         <span class="drop-corner-tag">Drop 001</span>
-        <div class="prod-img hat-prod" role="img" aria-label="Standard Snapback"></div>
+        <div class="prod-img hat-prod" role="img" aria-label="Standard Snapback gear inspection" tabindex="0">
+          <div class="inspect-tags" aria-hidden="true">
+            <span>Fit</span>
+            <span>Drop 001</span>
+            <span>Snapback</span>
+            <span>Finish</span>
+          </div>
+        </div>
         <div class="product-status-row"><span>Drop 001</span><span>Active</span></div>
         <h3>Standard Snapback</h3>
         <p>Structured black cap. Clean finish.</p>
-        <div class="product-meta"><strong>$35</strong><!-- Replace with live Shopify hats collection URL when ready. --><a href="https://YOUR-SHOPIFY-STORE.myshopify.com/collections/hats">Shop Hats</a></div>
-        <button class="spotter-toggle" type="button" aria-expanded="false" aria-controls="spotter-hat">Spotter Verdict</button>
+        <div class="product-meta"><strong>$35</strong><!-- Future Shopify product URL hook: replace this anchor with the live hat URL. --><a href="#hats">Shop Hats</a></div>
+        <div class="product-action-stack">
+          <button class="spotter-toggle" type="button" aria-expanded="false" aria-controls="spotter-hat">Spotter Verdict</button>
+          <button class="gear-sheet-button" type="button" data-gear-open="snapback">Open Gear Sheet</button>
+        </div>
         <div class="spotter-verdict" id="spotter-hat" hidden>
           <h4>Spotter Verdict</h4>
           <dl>
@@ -157,8 +270,79 @@
             <dt>Best pairing:</dt><dd>Everything in Drop 001.</dd>
             <dt>Final call:</dt><dd>No overthinking required.</dd>
           </dl>
+          <button class="gear-sheet-link" type="button" data-gear-open="snapback">Open Full Gear Sheet →</button>
         </div>
       </article>
+    </section>
+
+    <section class="loadout-rail-section" id="shop-loadouts" aria-labelledby="loadoutRailTitle">
+      <div class="section-row">
+        <div>
+          <p class="kicker">Shop the look</p>
+          <h2 id="loadoutRailTitle">Shop the Loadout</h2>
+        </div>
+      </div>
+      <div class="loadout-rail" aria-label="BeastFit loadout cards">
+        <article class="loadout-tile">
+          <div class="loadout-tile__visual loadout-pump" role="img" aria-label="Pump Cover Loadout"></div>
+          <div class="loadout-tile__body">
+            <h3>Pump Cover Loadout</h3>
+            <p>Best for cold starts, heavy days, and streetwear.</p>
+            <div class="loadout-chips"><span>Hoodie</span><span>Snapback</span><span>Shorts</span></div>
+            <div class="loadout-actions">
+              <button type="button" class="gear-sheet-link" data-gear-open="hoodie">View Loadout →</button>
+              <a class="btn gold small" href="#hoodies">Shop This Loadout →</a>
+            </div>
+          </div>
+        </article>
+        <article class="loadout-tile">
+          <div class="loadout-tile__visual loadout-training" role="img" aria-label="Training Loadout"></div>
+          <div class="loadout-tile__body">
+            <h3>Training Loadout</h3>
+            <p>Best for hot sessions, leg days, and clean athletic fit.</p>
+            <div class="loadout-chips"><span>Tee</span><span>Shorts</span><span>Snapback</span></div>
+            <div class="loadout-actions">
+              <button type="button" class="gear-sheet-link" data-gear-open="tee">View Loadout →</button>
+              <a class="btn gold small" href="#tees">Shop This Loadout →</a>
+            </div>
+          </div>
+        </article>
+        <article class="loadout-tile">
+          <div class="loadout-tile__visual loadout-street" role="img" aria-label="Streetwear Loadout"></div>
+          <div class="loadout-tile__body">
+            <h3>Streetwear Loadout</h3>
+            <p>Best for dark everyday rotation.</p>
+            <div class="loadout-chips"><span>Hoodie</span><span>Snapback</span></div>
+            <div class="loadout-actions">
+              <button type="button" class="gear-sheet-link" data-gear-open="snapback">View Loadout →</button>
+              <a class="btn gold small" href="#hats">Shop This Loadout →</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="comparison-section" aria-labelledby="comparisonTitle">
+      <div class="section-row compact-row">
+        <div>
+          <p class="kicker">Choose the right piece</p>
+          <h2 id="comparisonTitle">Fast call. No guessing.</h2>
+        </div>
+      </div>
+      <div class="comparison-grid">
+        <article class="comparison-card">
+          <h3>Hoodie vs Tee</h3>
+          <div><strong>Hoodie</strong><p>Pump cover, cold starts, oversized streetwear.</p></div>
+          <div><strong>Tee</strong><p>Training, hot sessions, clean athletic fit.</p></div>
+          <span>Training today? Tee + Shorts. Cold start? Hoodie + Snapback.</span>
+        </article>
+        <article class="comparison-card">
+          <h3>Shorts vs Hats</h3>
+          <div><strong>Shorts</strong><p>Movement, leg days, conditioning.</p></div>
+          <div><strong>Hat</strong><p>Finish the fit, daily rotation, no overthinking.</p></div>
+          <span>Need simple? Hat finishes everything.</span>
+        </article>
+      </div>
     </section>
 
     <section class="shop-help-grid" aria-label="Shopping help">
@@ -193,7 +377,7 @@
       </div>
     </section>
 
-    <!-- Future Shopify embed note: paste live Shopify Buy Button components here only if this public layout is changed to support embedded checkout. -->
+    <!-- Future Shopify embed hook: add live Buy Button components here only if embedded checkout is introduced. -->
   </main>
 
   <footer class="site-footer">
@@ -220,6 +404,86 @@
       <a href="fit-guide.html">Fit</a>
       <a href="index.html#contact">Join</a>
     </nav>
+  </div>
+
+  <div class="gear-sheet" id="gearSheet" aria-hidden="true">
+    <button class="gear-sheet__backdrop" type="button" aria-label="Close gear sheet" data-gear-close></button>
+    <section class="gear-sheet__panel" role="dialog" aria-modal="true" aria-labelledby="gearSheetTitle" tabindex="-1">
+      <header class="gear-sheet__header">
+        <div>
+          <p class="kicker">Gear Sheet</p>
+          <strong id="gearSheetMeta">DROP 001 · ACTIVE</strong>
+        </div>
+        <button class="gear-sheet__close" type="button" aria-label="Close gear sheet" data-gear-close>&times;</button>
+      </header>
+
+      <div class="gear-sheet__body">
+        <div class="gear-sheet__media">
+          <div class="gear-sheet__image" id="gearSheetImage" role="img" aria-label="Selected BeastFit product"></div>
+          <div class="gear-sheet__scan" id="gearSheetScan" aria-hidden="true"></div>
+        </div>
+
+        <div class="gear-sheet__content">
+          <div class="gear-sheet__title-row">
+            <div>
+              <h2 id="gearSheetTitle">Iron Discipline Hoodie</h2>
+              <p id="gearSheetUse">Pump cover / cold starts / streetwear</p>
+            </div>
+            <strong id="gearSheetPrice">$65</strong>
+          </div>
+
+          <nav class="gear-tabs" aria-label="Gear Sheet sections">
+            <button class="gear-tab active" type="button" data-gear-tab="verdict" aria-pressed="true">Verdict</button>
+            <button class="gear-tab" type="button" data-gear-tab="fit" aria-pressed="false">Fit</button>
+            <button class="gear-tab" type="button" data-gear-tab="pairings" aria-pressed="false">Pairings</button>
+            <button class="gear-tab" type="button" data-gear-tab="care" aria-pressed="false">Care</button>
+            <button class="gear-tab" type="button" data-gear-tab="shop" aria-pressed="false">Shop</button>
+          </nav>
+
+          <div class="gear-panels">
+            <section class="gear-panel active" data-gear-panel="verdict">
+              <dl class="gear-facts">
+                <dt>Buy if</dt><dd id="gearSheetBuyIf"></dd>
+                <dt>Don't buy if</dt><dd id="gearSheetDontBuyIf"></dd>
+                <dt>Final call</dt><dd id="gearSheetFinalCall"></dd>
+              </dl>
+            </section>
+
+            <section class="gear-panel" data-gear-panel="fit">
+              <dl class="gear-facts">
+                <dt>Fit type</dt><dd id="gearSheetFit"></dd>
+                <dt>Fit call</dt><dd id="gearSheetFitCall"></dd>
+                <dt>Use case</dt><dd id="gearSheetUseCase"></dd>
+              </dl>
+            </section>
+
+            <section class="gear-panel" data-gear-panel="pairings">
+              <dl class="gear-facts">
+                <dt>Best pairing</dt><dd id="gearSheetPairing"></dd>
+              </dl>
+              <div class="gear-pairing-grid" id="gearSheetPairings"></div>
+            </section>
+
+            <section class="gear-panel" data-gear-panel="care">
+              <dl class="gear-facts">
+                <dt>Care instructions</dt><dd id="gearSheetCare"></dd>
+              </dl>
+            </section>
+
+            <section class="gear-panel" data-gear-panel="shop">
+              <p id="gearSheetShopCopy">Open the right product section and keep the decision moving.</p>
+              <!-- Future Shopify product URL hook: the Gear Sheet CTA is populated from product.shopPath in script.js. Replace those safe page anchors with live Shopify product URLs when ready. -->
+              <a class="btn gold" id="gearSheetShopLink" href="#hoodies">Shop This Piece →</a>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <footer class="gear-sheet__footer">
+        <span id="gearSheetFooterCall">The main drop piece.</span>
+        <a class="btn gold small" id="gearSheetStickyLink" href="#hoodies">Shop This Piece →</a>
+      </footer>
+    </section>
   </div>
 
   <script src="script.js"></script>
